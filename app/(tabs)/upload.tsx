@@ -3,14 +3,14 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
+import { collection, addDoc } from "firebase/firestore"; 
+import { app, db } from 'firebaseConfig';
+
 
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
-
   const [labels, setLabels] = useState([]);
-
-
 
   const pickImage = async () => {
     let result = await ImagePicker.launchCameraAsync({
@@ -36,10 +36,8 @@ const UploadScreen = () => {
         return;
       }
 
-      // Replace 'YOUR_GOOGLE_CLOUD_VISION_API_KEY' with your actual API key
-      const apiKey = 'AIzaSyD9sC7zKyM3WNim0LwIJE4RQWkYKfHCkpo';
+      const apiKey = process.env.EXPO_PUBLIC_GCV_API_KEY;
       const apiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
-
       // Read the image file from local URI and convert it to base64
       const base64ImageData = await FileSystem.readAsStringAsync(uri, {
         encoding: FileSystem.EncodingType.Base64,
@@ -96,6 +94,20 @@ const UploadScreen = () => {
     } else {
       return false;
 
+    }
+  };
+
+  // TODO: 
+  const uploadImage = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        first: "Ada",
+        last: "Lovelace",
+        born: 1815
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
   };
   

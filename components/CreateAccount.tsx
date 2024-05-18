@@ -1,17 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
+import { createUserWithEmailAndPassword , User} from "firebase/auth";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore"; 
+import { app, db , auth } from 'firebaseConfig';
+import { UserProvider, useUser } from '../context/UserContext';
 
 const CreateAccountScreen = ({navigation}: any) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { setUserUID } = useUser();
+
+
+  const createUserProfile = async(user: User) => {
+    try {
+      const docRef = doc(db, "users", user.uid);
+      await setDoc(docRef, {
+        name: name,
+        email: email,
+        point: 0,
+        currStreak: 0,
+        longestStreak: 0,
+        completedDaily : false,
+        images: []
+      });
+      setUserUID(user.uid);
+      
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+    
+  };
+
 
   // const navigation = useNavigation();
-  const handleCreateAccount = () => {
-    // Add logic here to create the account (e.g., API call)
-    // Assuming successful account creation, navigate to ProfileScreen
-    navigation.navigate('Profile');
+  const handleCreateAccount = async() => {
+    console.log("in handleCreate");
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log("created user");
+      await createUserProfile(userCredential.user);
+      navigation.navigate('Profile'); 
+    } catch (e: any) {
+      console.error('Error creating account:', e.code, e.message);
+    }
   };
 
   return (
@@ -86,3 +120,4 @@ const styles = StyleSheet.create({
 });
 
 export default CreateAccountScreen;
+
