@@ -3,14 +3,13 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
-import { db } from 'firebaseConfig';
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+
 import { useUser } from 'context/UserContext';
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
   const [labels, setLabels] = useState([]);
-  const { userUID } = useUser();
+  const {  addImage } = useUser();
 
 
   const pickImage = async () => {
@@ -62,7 +61,7 @@ const UploadScreen = () => {
       const hasMatch = parseResponse(apiResponse.data.responses[0], variableString);
       if (hasMatch) {
         showAlert("Success!");
-        uploadImage(uri);
+        addImage(uri);
       } else {
         showAlert("Hmm, that doesnt seem correct. Try again");
       }
@@ -99,25 +98,6 @@ const UploadScreen = () => {
     }
   };
 
-  // TODO: 
-  const uploadImage = async (uri: string) => {
-    if (!userUID) {
-      console.error("User UID is null");
-      return; // Return early if userUID is null
-    }
-  
-    try {
-      const docRef = doc(db, "users", userUID);
-      console.log("got past the uid check");
-      await updateDoc(docRef, {
-        images: arrayUnion(uri) // Use arrayUnion to add the new URI to the images array
-      });
-      console.log("Document updated with new image URI: ", uri);
-    } catch (e) {
-      console.error("Error updating document: ", e);
-    }
-  };
-  
 
   const showAlert = (message: string) => {
     Alert.alert(

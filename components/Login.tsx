@@ -9,14 +9,14 @@ import { useUser } from '../context/UserContext';
 const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setUserUID } = useUser();
+  const { initUser } = useUser();
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    setUserUID(user.uid);
+    initUser(user.uid);
     navigation.navigate('Profile'); 
   })
   .catch((error) => {

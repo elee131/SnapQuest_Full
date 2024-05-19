@@ -10,7 +10,7 @@ const CreateAccountScreen = ({navigation}: any) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setUserUID } = useUser();
+  const { initUser } = useUser();
 
 
   const createUserProfile = async(user: User) => {
@@ -26,7 +26,7 @@ const CreateAccountScreen = ({navigation}: any) => {
         images: [],
         profilePic: ""
       });
-      setUserUID(user.uid);
+      initUser(user.uid);
 
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
