@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword , User} from "firebase/auth";
-import { collection, addDoc, doc, setDoc } from "firebase/firestore"; 
-import { app, db , auth } from 'firebaseConfig';
-import { UserProvider, useUser } from '../context/UserContext';
+import { doc, setDoc } from "firebase/firestore"; 
+import {  db , auth } from 'firebaseConfig';
+import { useUser } from '../context/UserContext';
 
 const CreateAccountScreen = ({navigation}: any) => {
   const [name, setName] = useState('');
@@ -26,7 +26,7 @@ const CreateAccountScreen = ({navigation}: any) => {
         images: []
       });
       setUserUID(user.uid);
-      
+
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);

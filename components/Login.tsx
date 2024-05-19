@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { app, db , auth } from 'firebaseConfig';
+import { auth } from 'firebaseConfig';
+import { useUser } from '../context/UserContext';
+
 
 
 const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const { setUserUID } = useUser();
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    setUserUID(user.uid);
     navigation.navigate('Profile'); 
   })
   .catch((error) => {

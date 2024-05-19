@@ -6,7 +6,6 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
-// for some reason does not work when passed in as process.env. DO NOT PUSH!!!
 const firebaseConfig = {
     apiKey: process.env.EXPO_PUBLIC_FB_API_KEY,
     authDomain: process.env.EXPO_PUBLIC_FB_AUTH_DOMAIN,
@@ -23,4 +22,4 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 
-export { app, db, auth };
+export { app, db, auth};
