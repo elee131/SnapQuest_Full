@@ -4,6 +4,11 @@ import { images } from '@/assets/data/images';
 import { profile } from '@/assets/data/images';
 import moment from 'moment-timezone';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useUser } from '../context/UserContext';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from 'firebaseConfig';
+
+
 
 // Define an interface for the props
 interface MyProgressBarProps {
@@ -21,10 +26,32 @@ const MyProgressBar: React.FC<MyProgressBarProps> = ({ progress }) => {
 };
 
 const ProfileScreen = () => {
-  const userName = 'Taylor Doe'; // Replace 'John Doe' with the actual user's name
-  const currentStreak = 17; // Replace with the actual current streak
-  const longestStreak = 21; // Replace with the actual longest streak
-  const progress = currentStreak / longestStreak; // Progress bar value
+  const { userUID, username, email, currStreak, longestStreak  } = useUser();
+  const progress = currStreak / longestStreak; // Progress bar value
+
+  const [name, setusername] = useState("");
+
+  const setUserInfo = async() => {
+    if (!userUID) {
+      console.error("User UID is null");
+      return; // Return early if userUID is null
+    }
+
+    const add = doc(db, "users", userUID);
+
+    const docSnap = await getDoc(add);
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+
+      userData.name
+      userData.email 
+
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  };
+  
 
   // Set due date and time
   const dueDateTime = moment.tz("2024-04-07T23:59:00", "America/Los_Angeles");
@@ -82,9 +109,9 @@ const ProfileScreen = () => {
       <ScrollView style={styles.container}>
         <View style={styles.profileContainer}>
           <Image source={profile} style={styles.profileImage} />
-          <Text style={styles.userName}>{userName}</Text>
+          <Text style={styles.username}>{username}</Text>
           <Text style={styles.streakText}>
-            Current Streak: {currentStreak} days | Longest Streak: {longestStreak} days
+            Current Streak: {currStreak} days | Longest Streak: {longestStreak} days
           </Text>
           <Text style={styles.streakText}>
             Current Rewards: {rewards} Points
@@ -122,7 +149,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 60,
   },
-  userName: {
+  username: {
     marginTop: 10,
     fontSize: 18,
     fontWeight: 'bold',

@@ -23,7 +23,8 @@ const CreateAccountScreen = ({navigation}: any) => {
         currStreak: 0,
         longestStreak: 0,
         completedDaily : false,
-        images: []
+        images: [],
+        profilePic: ""
       });
       setUserUID(user.uid);
 
