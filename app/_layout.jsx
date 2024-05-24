@@ -40,7 +40,7 @@ export default function RootLayout() {
   }
 
   return (
-    <UserProvider> {/* Provide the UserContext */}
+    <UserProvider> 
       <RootLayoutNav />
     </UserProvider>
   );
