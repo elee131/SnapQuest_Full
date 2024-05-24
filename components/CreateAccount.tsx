@@ -55,8 +55,9 @@ const CreateAccountScreen = ({navigation}: any) => {
   }
 
   return (
-    <>
+  
     <View style={styles.container}>
+      <View style={styles.secondContainer}>
       <Text style={styles.title}>Create an Account</Text>
 
       <TextInput
@@ -82,29 +83,32 @@ const CreateAccountScreen = ({navigation}: any) => {
       <TouchableOpacity style={styles.button} onPress={handleCreateAccount}>
         <Text style={styles.buttonText}>Create Account</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleLoginScreen}>
+      <TouchableOpacity style={styles.backToProfileButton} onPress={handleLoginScreen}>
       <Text style={styles.buttonText}>Back to Login Page</Text>
       </TouchableOpacity>
+      </View>
     </View>
-    </>
+    
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: "50%",
-    // flex: 1,
+    flex: 1, // Ensure the container stretches to fill available space
+    backgroundColor: "#fff",
     justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
-  
   },
+  secondContainer: {
+    alignItems: 'center',
+    marginRight: "10%", 
+    marginLeft: "10%",
+  }, 
+
   title: {
     fontSize: 28,
-    // fontWeight: 'bold',
-    marginBottom: 20,
-    fontFamily: "margarsa",
+    fontWeight: 'bold',
+    marginBottom: 30,
+    fontFamily: 'mon-b'
   },
   input: {
     width: '100%',
@@ -119,13 +123,23 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     height: 40,
-    backgroundColor: 'blue',
+    marginTop: 10,
+    backgroundColor: '#FBD0E7',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  backToProfileButton: {
+    width: '100%',
+    height: 40,
+    marginTop: 10,
+    backgroundColor: '#FFDDE1',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
   },
   buttonText: {
-    color: '#fff',
+    color: '#555',
     fontSize: 16,
   },
 });
