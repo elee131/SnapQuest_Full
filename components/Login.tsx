@@ -31,8 +31,9 @@ const LoginScreen = ({navigation}: any) => {
   };
 return (
     <View style =  {styles.container}>
+      <View style = {styles.secondContainer}>
 
-<Image source={require("@/assets/images/logo.jpg")} style={styles.logoStyle} />
+{/* <Image source={require("@/assets/images/logo.jpg")} style={styles.logoStyle} /> */}
 
     <Text style={styles.title}>Welcome Back!</Text>
     <Text style={styles.subtitle}>Please log in to check your profile</Text>
@@ -60,6 +61,7 @@ return (
  
 
     </View>
+    </View>
 ); 
 }
 
@@ -70,21 +72,20 @@ return (
 const styles = StyleSheet.create({
 
   container: {
-    // flex: 1,
-   // alignItems: 'center',
+    flex: 1, // Ensure the container stretches to fill available space
+    backgroundColor: "#fff",
     justifyContent: 'center',
-    padding: 20,
-    marginTop: "25%", 
-    backgroundColor: "fff", 
-    alignItems: 'center',
-
   },
+  secondContainer: {
+    alignItems: 'center',
+    marginRight: "10%", 
+    marginLeft: "10%",
+  }, 
   check: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    // marginTop: "50%", 
   },
   heading: {
     fontSize: 24,
@@ -103,7 +104,8 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     height: 40,
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
+    backgroundColor : "#3066BE",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -116,7 +118,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: '100%',
     height: 40,
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
+    backgroundColor : "#13315C",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
