@@ -49,7 +49,13 @@ const CreateAccountScreen = ({navigation}: any) => {
     }
   };
 
+  // navigation to login page 
+  const handleLoginScreen = () => {
+    navigation.navigate('Login')
+  }
+
   return (
+    <>
     <View style={styles.container}>
       <Text style={styles.title}>Create an Account</Text>
 
@@ -76,7 +82,11 @@ const CreateAccountScreen = ({navigation}: any) => {
       <TouchableOpacity style={styles.button} onPress={handleCreateAccount}>
         <Text style={styles.buttonText}>Create Account</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleLoginScreen}>
+      <Text style={styles.buttonText}>Back to Login Page</Text>
+      </TouchableOpacity>
     </View>
+    </>
   );
 };
 
