@@ -1,43 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Animated, Easing } from 'react-native';
-import { images } from '@/assets/data/images';
 import { profile } from '@/assets/data/images';
-import moment from 'moment-timezone';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { useUser } from '../context/UserContext';
-import { doc, getDoc } from "firebase/firestore";
-import { db } from 'firebaseConfig';
-
-
 
 
 const ProfileScreen = () => {
   const { userUID, username, email, currStreak, longestStreak, profilePic, point, images  } = useUser();
-  const progress = currStreak / longestStreak; // Progress bar value
-
-  const [name, setusername] = useState("");
-
-  const setUserInfo = async() => {
-    if (!userUID) {
-      console.error("User UID is null");
-      return; // Return early if userUID is null
-    }
-
-    const add = doc(db, "users", userUID);
-
-    const docSnap = await getDoc(add);
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-
-      userData.name
-      userData.email 
-
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  };
-  
 
   return (
     <SafeAreaView>
@@ -48,7 +16,6 @@ const ProfileScreen = () => {
         ) : (
           <Image source={profile} style={styles.profileImage} />
         )}
-  
           <Text style={styles.username}>{username}</Text>
           <Text style={styles.streakText}>
             Current Streak: {currStreak} days | Longest Streak: {longestStreak} days
@@ -57,9 +24,6 @@ const ProfileScreen = () => {
             Current Rewards: {point} Points
           </Text>
         </View>
-
-
-
         <Text style={styles.header}>
           Pictures you have taken:
         </Text>
