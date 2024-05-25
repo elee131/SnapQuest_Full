@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
+    paddingVertical: 20,
   },
   profileContainer: {
     alignItems: 'center',
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imageIcon: {
-    marginTop: 0,
+    marginTop: 10,
     width: 80,
     height: 80,
     alignSelf: 'center',
