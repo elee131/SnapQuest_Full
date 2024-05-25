@@ -12,7 +12,7 @@ import { db } from 'firebaseConfig';
 
 
 const ProfileScreen = () => {
-  const { userUID, username, email, currStreak, longestStreak, profilePic  } = useUser();
+  const { userUID, username, email, currStreak, longestStreak, profilePic, point  } = useUser();
   const progress = currStreak / longestStreak; // Progress bar value
 
   const [name, setusername] = useState("");
@@ -38,8 +38,6 @@ const ProfileScreen = () => {
     }
   };
   
-  const rewards = 105; 
-
 
   return (
     <SafeAreaView>
@@ -56,7 +54,7 @@ const ProfileScreen = () => {
             Current Streak: {currStreak} days | Longest Streak: {longestStreak} days
           </Text>
           <Text style={styles.streakText}>
-            Current Rewards: {rewards} Points
+            Current Rewards: {point} Points
           </Text>
         </View>
 
