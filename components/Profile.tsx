@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, TouchableOpacity, Alert, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { profile } from '@/assets/data/images';
 import { useUser } from '../context/UserContext';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = () => {
-  const { username, currStreak, longestStreak, profilePic, point, images, setProfilePic } = useUser();
+  const { username, currStreak, longestStreak, profilePic, point, images, setProfilePic, setUserUID} = useUser();
   const [showPictures, setPictures] = useState(false);
+  const navigation = useNavigation();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -24,11 +26,36 @@ const ProfileScreen = () => {
       setProfilePic(result.assets[0].uri);
     }
   };
+  
+  const handleLogout = () => {
+    navigation.navigate('Login')
+    setUserUID(null)
+  }
+
+  const handleVerification = () => {
+    Alert.alert(
+      "Verification Required",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Canceled"),
+          style: "cancel"
+        },
+        { text: "Logout",  onPress: () => handleLogout(), }
+      ]
+    );
+  };
 
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
+      <TouchableOpacity style={styles.logoutButton} onPress={handleVerification}>
+          <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+
+
         <View style={styles.profileContainer}>
         <Image source={{ uri: profilePic.toString() || profile.toString() }} style={styles.profileImage} />
           <TouchableOpacity onPress={pickImage} style={styles.editIconContainer}>
@@ -85,6 +112,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
+    paddingVertical: 20,
   },
   profileContainer: {
     alignItems: 'center',
@@ -150,10 +178,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imageIcon: {
-    marginTop: 0,
+    marginTop: 10,
     width: 80,
     height: 80,
     alignSelf: 'center',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  logoutButton: {
+    position: 'absolute',
+    top: 0,
+    right: 20,
+    backgroundColor: 'lightblue',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 10,
   },
 });
 
