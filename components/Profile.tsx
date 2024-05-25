@@ -30,7 +30,7 @@ const ProfileScreen = () => {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.profileContainer}>
-          <Image source={{ uri: profilePic || profile }} style={styles.profileImage} />
+        <Image source={{ uri: profilePic.toString() || profile.toString() }} style={styles.profileImage} />
           <TouchableOpacity onPress={pickImage} style={styles.editIconContainer}>
             <Image source={require('../assets/images/edit.png')} style={styles.editImage} />
           </TouchableOpacity>
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
   editImage: {
     width: 30,
     height: 30,
+    marginLeft: "70%", 
   },
   profileText: {
     alignItems: 'center', 
