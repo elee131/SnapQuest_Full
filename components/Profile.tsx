@@ -12,7 +12,7 @@ import { db } from 'firebaseConfig';
 
 
 const ProfileScreen = () => {
-  const { userUID, username, email, currStreak, longestStreak, profilePic, point  } = useUser();
+  const { userUID, username, email, currStreak, longestStreak, profilePic, point, images  } = useUser();
   const progress = currStreak / longestStreak; // Progress bar value
 
   const [name, setusername] = useState("");
@@ -66,7 +66,7 @@ const ProfileScreen = () => {
         <View style={styles.imagesContainer}>
           {images.map((image, index) => (
             <View style={styles.picHolder} key={index}>
-              <Image source={image.img} style={styles.image} />
+              <Image source={{uri: image}} style={styles.image} />
             </View>
           ))}
         </View>
