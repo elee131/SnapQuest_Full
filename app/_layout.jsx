@@ -23,6 +23,7 @@ export default function RootLayout() {
     'cursive-font': require('../assets/fonts/CelosiaGolden.ttf'),
     'margarsa': require('../assets/fonts/Maragsa.ttf'),
     'aven': require('../assets/fonts/Aven.ttf'),
+    'ArchivoBlack': require('../assets/fonts/ArchivoBlack.ttf'),
   });
 
   useEffect(() => {

@@ -35,23 +35,27 @@ const ProfileScreen = () => {
             <Image source={require('../assets/images/edit.png')} style={styles.editImage} />
           </TouchableOpacity>
         </View>
+        
         <View style={styles.profileText}>
           <Text style={styles.username}>{username}</Text>
           <Text style={styles.streakText}>
             Current Streak: {currStreak} days | Longest Streak: {longestStreak} days
           </Text>
-          <Text style={styles.rewardsText}>
-            Current Rewards: 
+          <Text style={styles.rewardsText}> 
+            Current Rewards:  </Text>
+
+           <Text style= {{marginBottom: 10, fontFamily: "aven"}}>         
             <MaterialCommunityIcons name="crown-outline" size={24} color="gold" style={{ marginLeft: 3, marginRight: 3 }} />
             {point} Points 
             <MaterialCommunityIcons name="crown-outline" size={24} color="gold" style={{ marginLeft: 3 }} />
-          </Text>
+            </Text> 
+
         </View>
         
         {showPictures ? (
           <>
             <TouchableOpacity onPress={() => setPictures(false)}>
-              <Image source={require('../assets/images/openImage.png')} style={styles.imageIcon} />
+              <Image source={require('../assets/images/hideImage.png')} style={styles.imageIcon} />
               <Text style={styles.buttonfont}>Hide Pictures</Text>
             </TouchableOpacity>
 
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
   profileContainer: {
     alignItems: 'center',
     marginTop: '10%',
-    marginBottom: '15%',
+    marginBottom: '5%',
     position: 'relative', 
   },
   profileImage: {
@@ -108,19 +112,20 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
   },
   username: {
-    marginTop: 10,
+    marginTop: 0,
     fontSize: 18,
     fontWeight: 'bold',
   },
   streakText: {
     marginTop: 5,
+    marginBottom: 10, 
     fontSize: 16,
     color: 'gray',
   },
   rewardsText: {
     marginTop: 15,
     fontSize: 20,
-    fontFamily: 'CelosiaGolden',
+    fontFamily: 'ArchivoBlack',
   },
   imagesContainer: {
     flexDirection: 'row',
