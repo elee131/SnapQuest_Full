@@ -4,6 +4,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
 import { UserProvider } from 'context/UserContext'; // Correct import statement
 
+
+
 export {
   ErrorBoundary,
 } from 'expo-router';
@@ -16,14 +18,19 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    'mon': require('../assets/fonts/Montserrat-Regular.ttf'),
-    'mon-sb': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-    'cute-font': require('../assets/fonts/ScholarlyAmbitionRegular.ttf'), 
-    'mon-b': require('../assets/fonts/Montserrat-Bold.ttf'),
-    'cursive-font': require('../assets/fonts/CelosiaGolden.ttf'),
-    'margarsa': require('../assets/fonts/Maragsa.ttf'),
-    'aven': require('../assets/fonts/Aven.ttf'),
-    'ArchivoBlack': require('../assets/fonts/ArchivoBlack.ttf'),
+    'inter-black': require('../assets/fonts/Inter-Black.ttf'),
+    'inter-bold': require('../assets/fonts/Inter-Bold.ttf'),
+    'inter-extra-bold': require('../assets/fonts/Inter-ExtraBold.ttf'),
+    'inter-semi-bold': require('../assets/fonts/Inter-SemiBold.ttf'),
+    'inter-extra-light': require('../assets/fonts/Inter-ExtraLight.ttf'),
+    'inter-light': require('../assets/fonts/Inter-Light.ttf'),
+    'inter-thin': require('../assets/fonts/Inter-Thin.ttf'),
+    'inter-medium': require('../assets/fonts/Inter-Medium.ttf'),
+    'inter': require('../assets/fonts/Inter-Regular.ttf'),
+    
+
+
+
   });
 
   useEffect(() => {

@@ -148,12 +148,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 10, 
     fontSize: 16,
+
     color: 'gray',
   },
   rewardsText: {
     marginTop: 15,
     fontSize: 20,
-    fontFamily: 'ArchivoBlack',
+    fontFamily: 'inter-extra-bold',
   },
   imagesContainer: {
     flexDirection: 'row',
