@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = () => {
   const { username, currStreak, longestStreak, profilePic, point, images, setProfilePic, setUserUID} = useUser();
-  const [showPictures, setPictures] = useState(false);
+  // const [showPictures, setPictures] = useState(false);
   const navigation = useNavigation();
 
   const pickImage = async () => {
@@ -78,28 +78,14 @@ const ProfileScreen = () => {
             </Text> 
 
         </View>
-        
-        {showPictures ? (
-          <>
-            <TouchableOpacity onPress={() => setPictures(false)}>
-              <Image source={require('../assets/images/hideImage.png')} style={styles.imageIcon} />
-              <Text style={styles.buttonfont}>Hide Pictures</Text>
-            </TouchableOpacity>
 
-            <View style={styles.imagesContainer}>
+      <View style={styles.imagesContainer}>
               {images.map((image, index) => (
                 <View style={styles.picHolder} key={index}>
                   <Image source={{ uri: image }} style={styles.image} />
                 </View>
               ))}
             </View>
-          </>
-        ) : (
-          <TouchableOpacity onPress={() => setPictures(true)}>
-            <Image source={require('../assets/images/showImage.png')} style={styles.imageIcon} />
-            <Text style={styles.buttonfont}>Show Pictures</Text>
-          </TouchableOpacity>
-        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -193,7 +179,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     right: 20,
-    backgroundColor: "#3066BE",
+    backgroundColor: "#568C69",
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 10,
