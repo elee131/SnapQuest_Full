@@ -88,7 +88,7 @@ const Index = () => {
           <View style={styles.rewardsContainer}>
             <Text style={styles.rewardsText}>Current Rewards:</Text>
 
-            <Text style={{ marginBottom: 10, fontFamily: "inter-bold" }}>
+            <Text style={{ marginBottom: 10, fontFamily: "inter-bold", fontSize: 20}}>
               <MaterialCommunityIcons
                 name="crown-outline"
                 size={28}
