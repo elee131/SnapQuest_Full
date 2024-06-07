@@ -97,7 +97,7 @@ const CreateAccountScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensure the container stretches to fill available space
-   backgroundColor: "#fff",
+   backgroundColor: "#95BFA0",
     justifyContent: 'center',
   },
   secondContainer: {
