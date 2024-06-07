@@ -5,6 +5,8 @@ import { createUserWithEmailAndPassword , User} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 import {  db , auth } from 'firebaseConfig';
 import { useUser } from '../context/UserContext';
+import FallingLeavesBackground from './FallingLeavesBackground';
+
 
 const CreateAccountScreen = ({navigation}: any) => {
   const [name, setName] = useState('');
@@ -57,6 +59,7 @@ const CreateAccountScreen = ({navigation}: any) => {
   return (
   
     <View style={styles.container}>
+       <FallingLeavesBackground />
       <View style={styles.secondContainer}>
       <Text style={styles.title}>Create an Account</Text>
 
@@ -95,20 +98,27 @@ const CreateAccountScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensure the container stretches to fill available space
-    backgroundColor: "#95BFA0",
+    // backgroundColor: "#95BFA0",
     justifyContent: 'center',
   },
   secondContainer: {
+    borderColor: "#0C403B",
+    paddingHorizontal: "12%", 
+    backgroundColor: "#fff",
+    paddingVertical: "15%",
+    borderWidth: 3, 
     alignItems: 'center',
-    marginRight: "10%", 
-    marginLeft: "10%",
+    // marginRight: "2%", 
+    // marginLeft: "2%",
+
+
   }, 
 
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 30,
-    fontFamily: 'mon-b'
+    fontFamily: 'inter-extra-bold'
   },
   input: {
     width: '100%',
@@ -139,8 +149,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   buttonText: {
-    // color: '#555',
     color: '#fff',
+    fontFamily: 'inter',
     fontSize: 16,
   },
 });
