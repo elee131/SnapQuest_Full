@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginNavigation from "../../components/LoginNavigation";
-import Main from "../../components/main";
+import Main from "../../components/Main";
 import { useUser } from "../../context/UserContext";
 
 const Stack = createStackNavigator();

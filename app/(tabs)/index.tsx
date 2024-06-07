@@ -8,14 +8,13 @@ import {
   Image,
   TouchableOpacity,
   Alert,
-  Button,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { profile } from "@/assets/data/images";
 import { useUser } from "../../context/UserContext";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
-
+import Gallery from "@/components/Gallery";
 const Index = () => {
   const {
     username,
@@ -91,8 +90,8 @@ const Index = () => {
         <View style={styles.profileText}>
           <Text style={styles.username}>{username}</Text>
           <Text style={styles.streakText}>
-            Current Streak: {currStreak} days | Longest Streak: {longestStreak}{" "}
-            days
+            Current Streak: {currStreak} days <br />
+             Longest Streak: {longestStreak}{""} days
           </Text>
           <Text style={styles.rewardsText}>Current Rewards: </Text>
 
@@ -113,13 +112,7 @@ const Index = () => {
           </Text>
         </View>
 
-        <View style={styles.imagesContainer}>
-          {images.map((image, index) => (
-            <View style={styles.picHolder} key={index}>
-              <Image source={{ uri: image }} style={styles.image} />
-            </View>
-          ))}
-        </View>
+       <Gallery/>
       </ScrollView>
     </SafeAreaView>
   );
@@ -137,7 +130,7 @@ const styles = StyleSheet.create({
   profileContainer: {
     alignItems: "center",
     marginTop: "10%",
-    marginBottom: "5%",
+    marginBottom: "2%",
     position: "relative",
   },
   profileImage: {
@@ -161,37 +154,21 @@ const styles = StyleSheet.create({
   },
   username: {
     marginTop: 0,
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 20,
+    fontFamily: "inter-bold",
+    marginBottom: 10,
   },
   streakText: {
     marginTop: 5,
     marginBottom: 10,
     fontSize: 16,
-
     color: "gray",
+    fontFamily: "inter-semi-bold",
   },
   rewardsText: {
     marginTop: 15,
     fontSize: 20,
     fontFamily: "inter-extra-bold",
-  },
-  imagesContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    paddingHorizontal: 20,
-  },
-  picHolder: {
-    width: 100,
-    height: 100,
-    marginVertical: 10,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-    borderRadius: 5,
   },
   buttonfont: {
     fontSize: 12,
