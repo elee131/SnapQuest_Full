@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   },
   secondContainer: {
     alignItems: 'center',
-    marginRight: "10%",
-    marginLeft: "10%",
+    marginRight: "12%",
+    marginLeft: "12%",
   },
   input: {
     width: '100%',
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
+    fontFamily: 'inter'
   },
   createAccountButton: {
     marginTop: 10,
@@ -109,19 +110,20 @@ const styles = StyleSheet.create({
   createAccountText: {
     color: 'white',
     fontSize: 16,
+    fontFamily: 'inter'
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     color: "black",
     marginBottom: 10,
-    fontFamily: 'mon-b'
+    fontFamily: 'inter-extra-bold'
   },
   subtitle: {
     fontSize: 16,
     marginBottom: 20,
     color: '#888',
-    fontFamily: 'mon-sb'
+    fontFamily: 'inter-semi-bold'
   },
 });
 

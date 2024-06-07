@@ -95,7 +95,7 @@ const CreateAccountScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensure the container stretches to fill available space
-    backgroundColor: "#fff",
+    backgroundColor: "#95BFA0",
     justifyContent: 'center',
   },
   secondContainer: {
@@ -124,8 +124,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginTop: 10,
-    // backgroundColor: '#FBD0E7',
-    backgroundColor: "#1A659E",
+    backgroundColor: "#568C69",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -134,8 +133,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginTop: 10,
-    backgroundColor: "#004E89",
-    // backgroundColor: '#FFDDE1',
+    backgroundColor: "#0C403B",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
