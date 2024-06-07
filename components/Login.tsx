@@ -69,11 +69,11 @@ const LoginScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF8F0",
     justifyContent: 'center',
   },
   secondContainer: {
-    borderColor: "#568C69",
+    borderColor: "#FFF8F0",
     paddingHorizontal: "10%", 
     backgroundColor: "#fff",
     paddingVertical: "15%",
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     height: 40,
-    backgroundColor: "#568C69",
+    backgroundColor: "#F7CE5B",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -107,13 +107,14 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontFamily: 'inter'
+    fontFamily: 'inter-semi-bold',
+  
   },
   createAccountButton: {
     marginTop: 10,
     width: '100%',
     height: 40,
-    backgroundColor: "#0C403B",
+    backgroundColor: "#FFA62B",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   createAccountText: {
     color: 'white',
     fontSize: 16,
-    fontFamily: 'inter'
+    fontFamily: 'inter-semi-bold'
   },
   title: {
     fontSize: 28,

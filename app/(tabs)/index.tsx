@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 130,
     borderRadius: 65,
-    backgroundColor: "#95BFA0", // Background color for the profile image
+    backgroundColor: "#95BFA0", 
   },
   editIconContainer: {
     position: "absolute",
