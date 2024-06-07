@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from 'firebaseConfig';
 import { useUser } from '../context/UserContext';
 import { useFocusEffect } from '@react-navigation/native';
+import FallingLeavesBackground from './FallingLeavesBackground';
 
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -37,6 +38,7 @@ const LoginScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
+      <FallingLeavesBackground />
       <View style={styles.secondContainer}>
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>Please log in to check your profile</Text>
@@ -71,9 +73,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   secondContainer: {
+    borderColor: "#568C69",
+    paddingHorizontal: "10%", 
+    backgroundColor: "#fff",
+    paddingVertical: "15%",
+    borderWidth: 3, 
     alignItems: 'center',
-    marginRight: "12%",
-    marginLeft: "12%",
+    marginRight: "2%", 
+    marginLeft: "2%",
+    borderRadius: 2,
+    elevation:10, 
+
+
   },
   input: {
     width: '100%',

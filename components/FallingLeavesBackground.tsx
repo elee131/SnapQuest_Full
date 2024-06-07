@@ -5,11 +5,11 @@ const AnimatedImage = Animated.createAnimatedComponent(Image);
 
 const FallingLeavesBackground = () => {
   const windowWidth = Dimensions.get('window').width;
-  const leaves = Array.from({ length: 20 }).map((_, index) => ({
+  const leaves = Array.from({ length: 25 }).map((_, index) => ({
     key: index.toString(),
     x: Math.random() * windowWidth,
     y: -50,
-    speed: Math.random() * 35 + 1, // Random speed between 1-3
+    speed: Math.random() * 30 + 1, // Random speed between 1-3
     rotation: Math.random() * 360,
   }));
 
@@ -31,7 +31,7 @@ const FallingLeavesBackground = () => {
       {leaves.map((leaf, index) => (
         <AnimatedImage
           key={leaf.key}
-          source={require('../assets/images/leaf.jpg')} // Replace with your leaf image
+          source={require('../assets/images/leaf.jpg')}
           style={[
             styles.leaf,
             {
