@@ -15,6 +15,7 @@ import { useUser } from "../../context/UserContext";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
 import Gallery from "@/components/Gallery";
+
 const Index = () => {
   const {
     username,
@@ -22,23 +23,18 @@ const Index = () => {
     longestStreak,
     profilePic,
     point,
-    images,
     setProfilePic,
     setUserUID,
   } = useUser();
-  // const [showPictures, setPictures] = useState(false);
   const navigation = useNavigation();
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
-
-    console.log(result);
 
     if (!result.canceled) {
       setProfilePic(result.assets[0].uri);
@@ -64,22 +60,16 @@ const Index = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <TouchableOpacity
-          style={styles.logoutButton}
-          onPress={handleVerification}
-        >
+        <TouchableOpacity style={styles.logoutButton} onPress={handleVerification}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
 
         <View style={styles.profileContainer}>
           <Image
-            source={{ uri: profilePic.toString() || profile.toString() }}
+            source={{ uri: profilePic || profile }}
             style={styles.profileImage}
           />
-          <TouchableOpacity
-            onPress={pickImage}
-            style={styles.editIconContainer}
-          >
+          <TouchableOpacity onPress={pickImage} style={styles.editIconContainer}>
             <Image
               source={require("../../assets/images/edit.png")}
               style={styles.editImage}
@@ -90,29 +80,33 @@ const Index = () => {
         <View style={styles.profileText}>
           <Text style={styles.username}>{username}</Text>
           <Text style={styles.streakText}>
-            Current Streak: {currStreak} days <br />
-             Longest Streak: {longestStreak}{""} days
+            Current Streak: {currStreak} days
+            {'\n'}
+            Longest Streak: {longestStreak} days
           </Text>
-          <Text style={styles.rewardsText}>Current Rewards: </Text>
 
-          <Text style={{ marginBottom: 10, fontFamily: "aven" }}>
-            <MaterialCommunityIcons
-              name="crown-outline"
-              size={24}
-              color="gold"
-              style={{ marginLeft: 3, marginRight: 3 }}
-            />
-            {point} Points
-            <MaterialCommunityIcons
-              name="crown-outline"
-              size={24}
-              color="gold"
-              style={{ marginLeft: 3 }}
-            />
-          </Text>
+          <View style={styles.rewardsContainer}>
+            <Text style={styles.rewardsText}>Current Rewards:</Text>
+
+            <Text style={{ marginBottom: 10, fontFamily: "inter-bold" }}>
+              <MaterialCommunityIcons
+                name="crown-outline"
+                size={28}
+                color="gold"
+                style={{ marginLeft: 3, marginRight: 3 }}
+              />
+              {point} Points
+              <MaterialCommunityIcons
+                name="crown-outline"
+                size={28}
+                color="gold"
+                style={{ marginLeft: 3 }}
+              />
+            </Text>
+          </View>
         </View>
 
-       <Gallery/>
+        <Gallery />
       </ScrollView>
     </SafeAreaView>
   );
@@ -121,7 +115,7 @@ const Index = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -137,6 +131,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 130,
     borderRadius: 65,
+    backgroundColor: "#95BFA0", // Background color for the profile image
   },
   editIconContainer: {
     position: "absolute",
@@ -165,6 +160,14 @@ const styles = StyleSheet.create({
     color: "gray",
     fontFamily: "inter-semi-bold",
   },
+  rewardsContainer: {
+    backgroundColor: "#95BFA0",
+    width: "80%",
+    alignItems: "center",
+    paddingBottom: "2%",
+    marginTop: "5%",
+    borderRadius:  60,
+  },
   rewardsText: {
     marginTop: 15,
     fontSize: 20,
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
   },
   buttonfont: {
     fontSize: 12,
-    fontWeight: "bold",
+    fontFamily: "inter-bold",
     textAlign: "center",
   },
   imageIcon: {
