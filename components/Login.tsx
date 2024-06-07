@@ -15,7 +15,7 @@ const LoginScreen = ({ navigation }: any) => {
       .then((userCredential) => {
         const user = userCredential.user;
         initUser(user.uid);
-        navigation.navigate('Profile');
+        navigation.navigate('Main');
       })
       .catch((error) => {
         const errorCode = error.code;
