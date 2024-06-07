@@ -64,6 +64,8 @@ const Index = () => {
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
 
+
+      <View style = {styles.topHalf}>
         <View style={styles.profileContainer}>
           <Image
             source={{ uri: profilePic || profile }}
@@ -84,7 +86,8 @@ const Index = () => {
             {'\n'}
             Longest Streak: {longestStreak} days
           </Text>
-
+          </View>
+          </View>
           <View style={styles.rewardsContainer}>
             <Text style={styles.rewardsText}>Current Rewards:</Text>
 
@@ -104,8 +107,8 @@ const Index = () => {
               />
             </Text>
           </View>
-        </View>
-
+  
+       
         <Gallery />
       </ScrollView>
     </SafeAreaView>
@@ -115,11 +118,12 @@ const Index = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#FFF8F0",
   },
   scrollViewContent: {
     flexGrow: 1,
     paddingVertical: 20,
+    marginTop: "3%", 
   },
   profileContainer: {
     alignItems: "center",
@@ -127,11 +131,21 @@ const styles = StyleSheet.create({
     marginBottom: "2%",
     position: "relative",
   },
+  topHalf: {
+    marginTop: "8%", 
+    marginHorizontal: "5%",
+    borderColor: "#FFF8F0",
+    borderWidth: 3, 
+    paddingBottom: "5%", 
+    elevation: 5,
+    borderRadius: 65, 
+    backgroundColor: "white", 
+  },
   profileImage: {
     width: 130,
     height: 130,
     borderRadius: 65,
-    backgroundColor: "#95BFA0", // Background color for the profile image
+    backgroundColor: "#FFF8F0", 
   },
   editIconContainer: {
     position: "absolute",
@@ -156,22 +170,28 @@ const styles = StyleSheet.create({
   streakText: {
     marginTop: 5,
     marginBottom: 10,
-    fontSize: 16,
+    fontSize: 18,
     color: "gray",
     fontFamily: "inter-semi-bold",
   },
   rewardsContainer: {
-    backgroundColor: "#95BFA0",
+    backgroundColor: "#fff",
     width: "80%",
     alignItems: "center",
     paddingBottom: "2%",
+    paddingTop: "2%", 
     marginTop: "5%",
     borderRadius:  60,
+    justifyContent: "center",
+    alignSelf: "center",
+    borderWidth: 3, 
+    borderColor: "#FFF8F0", 
+    elevation: 5, 
   },
   rewardsText: {
-    marginTop: 15,
     fontSize: 20,
     fontFamily: "inter-extra-bold",
+    textAlign: "center",
   },
   buttonfont: {
     fontSize: 12,
@@ -193,7 +213,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 20,
-    backgroundColor: "#568C69",
+    backgroundColor: "#F7CE5B",
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 10,

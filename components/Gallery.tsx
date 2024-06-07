@@ -27,18 +27,26 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-around",
     paddingHorizontal: 20,
-    marginTop: "5%"
+    marginTop: "5%", 
+    backgroundColor: "#fff", 
+    marginLeft: "3%",
+    marginRight: "3%",
+    borderRadius: 20, 
   },
   image: {
     width: "100%",
     height: "100%",
     resizeMode: "cover",
     borderRadius: 5,
+
   },
   picHolder: {
     width: 100,
     height: 100,
     marginVertical: 5,
+    borderWidth: 2, 
+    borderRadius: 5,
+    borderColor: "#FFF8F0"
   },
 });
 export default Gallery

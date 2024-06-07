@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword , User} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 import {  db , auth } from 'firebaseConfig';
 import { useUser } from '../context/UserContext';
+import FallingLeavesBackground from './FallingLeavesBackground';
 
 
 
@@ -59,6 +59,7 @@ const CreateAccountScreen = ({navigation}: any) => {
   return (
   
     <View style={styles.container}>
+      <FallingLeavesBackground/>
       <View style={styles.secondContainer}>
       <Text style={styles.title}>Create an Account</Text>
 
@@ -97,15 +98,20 @@ const CreateAccountScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensure the container stretches to fill available space
-   backgroundColor: "#95BFA0",
+   backgroundColor: "#FFF8F0",
     justifyContent: 'center',
   },
   secondContainer: {
-    borderColor: "#0C403B",
+    borderColor: "#FFF8F0",
+    paddingHorizontal: "10%", 
+    backgroundColor: "#fff",
+    paddingVertical: "15%",
+    borderWidth: 3, 
     alignItems: 'center',
-    marginRight: "12%", 
-    marginLeft: "12%",
-
+    marginRight: "2%", 
+    marginLeft: "2%",
+    borderRadius: 2,
+    elevation:10, 
 
   }, 
 
@@ -129,7 +135,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginTop: 10,
-    backgroundColor: "#568C69",
+    backgroundColor: "#F7CE5B",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -138,14 +144,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginTop: 10,
-    backgroundColor: "#0C403B",
+    backgroundColor: "#FFA62B",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
   },
   buttonText: {
     color: '#fff',
-    fontFamily: 'inter',
+    fontFamily: 'inter-semi-bold',
     fontSize: 16,
   },
 });

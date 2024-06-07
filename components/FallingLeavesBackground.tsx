@@ -9,7 +9,7 @@ const FallingLeavesBackground = () => {
     key: index.toString(),
     x: Math.random() * windowWidth,
     y: -50,
-    speed: Math.random() * 30 + 1, // Random speed between 1-3
+    speed: Math.random() * 30 + 1, 
     rotation: Math.random() * 360,
   }));
 
