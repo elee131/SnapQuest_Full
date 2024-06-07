@@ -112,7 +112,7 @@ const UploadScreen = () => {
       <View style={styles.container}>
         <ImageBackground source={require("@/assets/images/motiv.jpg")} style={styles.logoStyle}>
       <View style={styles.uploadContainer}>
-        <Text style={styles.title}>Daily Photo Upload</Text>
+        <Text style={styles.title}>Upload Your Photo!</Text>
         <TouchableOpacity onPress={pickImage} style={styles.uploadButton}>
           <Text style={styles.uploadButtonText}>Tap to upload photo from camera</Text>
         </TouchableOpacity>
@@ -135,17 +135,17 @@ const styles = StyleSheet.create({
     marginTop: "55%",
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "rgba(245, 255, 255, 0.7)",
     marginRight: 25, 
     marginLeft: 25, 
+    backgroundColor: "#FFA62B",
+    borderRadius: 20
 
   },
   title: {
     fontSize: 25,
-    // fontWeight: 'bold',
     marginTop: 12,
     marginBottom: 20,
-    fontFamily: "margarsa",
+    fontFamily: "inter-bold",
   },
   uploadButton: {
     backgroundColor: '#e7e7e7',
@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   },
   uploadButtonText: {
     fontSize: 15,
+    fontFamily: "inter",
     color: '#4a4a4a',
   },
   previewImage: {
