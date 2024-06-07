@@ -5,7 +5,7 @@ const AnimatedImage = Animated.createAnimatedComponent(Image);
 
 const FallingLeavesBackground = () => {
   const windowWidth = Dimensions.get('window').width;
-  const leaves = Array.from({ length: 25 }).map((_, index) => ({
+  const leaves = Array.from({ length: 20 }).map((_, index) => ({
     key: index.toString(),
     x: Math.random() * windowWidth,
     y: -50,

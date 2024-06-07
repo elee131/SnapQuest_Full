@@ -5,6 +5,7 @@ import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useUser } from 'context/UserContext';
+import FallingLeavesBackground from '../../components/FallingLeavesBackground';
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
@@ -110,7 +111,7 @@ const UploadScreen = () => {
 
   return (
       <View style={styles.container}>
-        
+        <FallingLeavesBackground/>
       <View style={styles.uploadContainer}>
         <Text style={styles.title}>Upload Your Photo!</Text>
         <TouchableOpacity onPress={pickImage} style={styles.uploadButton}>
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   },
   uploadContainer: {
     alignItems: 'center',
-    marginHorizontal: "10%",
+    marginHorizontal: "5%",
     paddingHorizontal: "3%", 
     paddingVertical: "5%", 
     backgroundColor: "#fff",
