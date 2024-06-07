@@ -83,8 +83,6 @@ const styles = StyleSheet.create({
     marginLeft: "2%",
     borderRadius: 2,
     elevation:10, 
-
-
   },
   input: {
     width: '100%',

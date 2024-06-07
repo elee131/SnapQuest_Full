@@ -27,7 +27,11 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-around",
     paddingHorizontal: 20,
-    marginTop: "5%"
+    marginTop: "5%", 
+    backgroundColor: "#fff", 
+    marginLeft: "3%",
+    marginRight: "3%",
+    borderRadius: 20, 
   },
   image: {
     width: "100%",
