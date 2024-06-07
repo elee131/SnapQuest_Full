@@ -36,6 +36,7 @@ const Main = ({ navigation }: any) => {
           options={{
             tabBarLabel: 'Home',
             title: 'Home',
+            headerShown: false, 
             tabBarIcon: ({ color, size }) => <AntDesign name="home" size={24} color={color} />,
           }}
         />
@@ -45,6 +46,7 @@ const Main = ({ navigation }: any) => {
           options={{
             tabBarLabel: 'Rewards',
             title: 'Rewards',
+            headerShown: false, 
             tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="star-four-points-outline" size={24} color={color} />,
           }}
         />
@@ -53,6 +55,7 @@ const Main = ({ navigation }: any) => {
           name="upload"
           options={{
             tabBarLabel: 'Upload',
+            headerShown: false, 
             title: 'Upload Image',
             tabBarIcon: ({ color, size }) => <MaterialIcons name="add-a-photo" size={24} color={color} />,
           }}
@@ -62,6 +65,7 @@ const Main = ({ navigation }: any) => {
           name="following"
           options={{
             tabBarLabel: 'Other Users',
+            headerShown: false, 
             title: 'Other Users',
             tabBarIcon: ({ color, size }) => <FontAwesome name="users" size={24} color={color} />,
           }}
@@ -71,6 +75,7 @@ const Main = ({ navigation }: any) => {
           name="index"
           options={{
             tabBarLabel: 'My Profile',
+            headerShown: false, 
             title: 'Profile',
             tabBarIcon: ({ color, size }) => <AntDesign name="profile" size={24} color={color} />,
           }}

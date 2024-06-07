@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
     paddingVertical: 20,
-    marginTop: "3%", 
+    marginTop: "10%", 
   },
   profileContainer: {
     alignItems: "center",
