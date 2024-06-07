@@ -6,6 +6,8 @@ import { doc, setDoc } from "firebase/firestore";
 import {  db , auth } from 'firebaseConfig';
 import { useUser } from '../context/UserContext';
 
+
+
 const CreateAccountScreen = ({navigation}: any) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -95,20 +97,23 @@ const CreateAccountScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensure the container stretches to fill available space
-    backgroundColor: "#fff",
+   backgroundColor: "#95BFA0",
     justifyContent: 'center',
   },
   secondContainer: {
+    borderColor: "#0C403B",
     alignItems: 'center',
-    marginRight: "10%", 
-    marginLeft: "10%",
+    marginRight: "12%", 
+    marginLeft: "12%",
+
+
   }, 
 
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 30,
-    fontFamily: 'mon-b'
+    fontFamily: 'inter-extra-bold'
   },
   input: {
     width: '100%',
@@ -124,8 +129,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginTop: 10,
-    // backgroundColor: '#FBD0E7',
-    backgroundColor: "#1A659E",
+    backgroundColor: "#568C69",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -134,15 +138,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginTop: 10,
-    backgroundColor: "#004E89",
-    // backgroundColor: '#FFDDE1',
+    backgroundColor: "#0C403B",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
   },
   buttonText: {
-    // color: '#555',
     color: '#fff',
+    fontFamily: 'inter',
     fontSize: 16,
   },
 });
