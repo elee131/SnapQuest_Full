@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, Animated} from 'react-native';
 import themeContext from '@/assets/theme/themeContext';
 import { useUser } from "../../context/UserContext";
+import LottieView from "lottie-react-native";
 
 
 const Homescreen = () => {
@@ -24,9 +25,17 @@ const theme = useContext(themeContext)
 
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]} >
           <View style={[styles.secondContainer, ]}>
+
       {/* Header Section */}
+      
+      <LottieView
+          autoPlay
+          resizeMode="cover"
+          style={styles.welcome}
+          source={require("../../assets/animation/welcome.json")}
+        />
       <View style={[styles.header, {backgroundColor: theme.content}]}>
-        <Text style={[styles.headerText, {color: theme.color}]}> Hello, {username}!</Text>
+        <Text style={[styles.headerText, {color: theme.color}]}> Welcome, {username}!</Text>
       </View>
 
       {/* Quest Card Section */}
@@ -62,15 +71,15 @@ const styles = StyleSheet.create({
 
   },
   secondContainer: {
-    marginTop: "15%", 
+    marginTop: "5%", 
     marginBottom: "5%"
 
   }, 
   header: {
-    marginTop: 20,
-    padding: 16,
-    alignItems: 'center',
+    paddingHorizontal: 16,
     marginHorizontal: "5%", 
+    paddingVertical: "3%",
+    alignItems: 'center',
     borderRadius: 10, 
     shadowColor: '#000000', // For iOS shadow
     elevation: 5, // For Android shadow
@@ -79,7 +88,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   },
   headerText: {
-    fontSize: 38,
+    fontSize: 30,
     fontFamily: 'inter-bold',
   },
   questCard: {
@@ -153,6 +162,13 @@ const styles = StyleSheet.create({
     fontFamily: "inter",
     marginBottom: 4,
   },
+  welcome: {
+    width: 200, 
+    height: 200, 
+    padding: 0, 
+    alignSelf: "center",
+    justifyContent: "center",
+  }
 
 });
 
