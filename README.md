@@ -23,9 +23,9 @@ SnapQuest offers our users a daily "Quest" target to take a picture of. An examp
 ## Table Of Contents
 - [Background](#background) 
 - [How to Install and Run Snap Quest](#install_and_run) 
-- How to use Snap Quest
-- Collaborators
-- License
+- [How to use Snap Quest](#useSnapQuest)
+- [Collaborators](#collaborators)
+- [License](#license)
 
 ## Background  
 <a name="background"></a>
@@ -73,6 +73,19 @@ Before you begin, ensure you have npm installed on your machine. If you don't ha
       
    </li>
 </ol>
-
 <h4>After running the commands, Expo will start. <br>
 Then you can view the project in your web browser or on a mobile device using the Expo app.</h4>
+
+## How to use Snap Quest
+<a name="useSnapQuest"></a>
+To be Updated After completion of project
+
+## Collaborators 
+<a name="collaborators"></a>
+
+## License
+This project is licensed under <b>All Rights Reserved</b>. All rights to the code and associated materials are reserved. This code may only be viewed by recruiters for evaluation purposes and may not be copied, modified, or distributed without explicit permission from the author.
+<a name="license"></a>
+
+
+
