@@ -1,10 +1,15 @@
 <h1 align ="center">
-   Snap Quest
+   📸 Snap Quest
 </h1>
 
 <p align = "center">
 <img src="assets/headerImage.png?raw=true" alt="snapQuest Image Logo"  width="50%" height="50%" />
 </p>
+
+## Description
+SnapQuest offers our users a daily "Quest" target to take a picture of. An example of a quest may be something like "take a picture of cherry blossoms". The targets are carefully crafted to get our users to take a stroll and enjoy nature, promoting staying active and and taking a moment to breathe.
+
+# Techologies Used
 
 ## Table Of Contents
 - Requirements
