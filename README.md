@@ -73,8 +73,8 @@ Before you begin, ensure you have npm installed on your machine. If you don't ha
       
    </li>
 </ol>
-<h4>After running the commands, Expo will start. <br>
-Then you can view the project in your web browser or on a mobile device using the Expo app.</h4>
+<p>After running the commands, Expo will start. <br>
+Then you can view the project in your web browser or on a mobile device using the Expo app.</p>
 
 ## How to use Snap Quest
 <a name="useSnapQuest"></a>
@@ -82,6 +82,11 @@ To be Updated After completion of project
 
 ## Collaborators 
 <a name="collaborators"></a>
+Frontend: 
+- [Anica Mok](https://github.com/Anica1004)
+Backend: 
+- [Eojin Lee](https://github.com/elee131)
+- [Erika Tian](https://github.com/ErikaTian)
 
 ## License
 This project is licensed under <b>All Rights Reserved</b>. All rights to the code and associated materials are reserved. This code may only be viewed by recruiters for evaluation purposes and may not be copied, modified, or distributed without explicit permission from the author.
