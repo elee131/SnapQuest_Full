@@ -82,9 +82,11 @@ To be Updated After completion of project
 
 ## Collaborators 
 <a name="collaborators"></a>
-Frontend: 
+
+#### Frontend: 
 - [Anica Mok](https://github.com/Anica1004)
-Backend: 
+
+#### Backend: 
 - [Eojin Lee](https://github.com/elee131)
 - [Erika Tian](https://github.com/ErikaTian)
 
