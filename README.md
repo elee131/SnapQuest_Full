@@ -40,29 +40,39 @@ Before you begin, ensure you have npm installed on your machine. If you don't ha
 <br>
 
 ### Run Snap Quest 
-To set up the project on your local machine, follow these steps:
 
+<h4>To set up the project on your local machine, follow these steps:</h4>
+<br>
 <ol>
-   <li>
-      Clone the repository 
+   <li>Clone the repository by running the following command in your terminal: 
       <br>
       <br>
-      git clone https://github.com/elee131/snapQuest_projHub
       
-      cd snapQuest_projHub
+      git clone https://github.com/elee131/SnapQuest_Full.git
+      
+   </li>
+   <li>Navigate into the cloned directory by running:
+      <br>
+      <br>
+      
+      cd SnapQuest_Full
+      
+   </li>
+    <li>Install dependencies:
+      <br>
+      <br>
+      
+      npm i
+      
+   </li>
+   <li>Start the project:
+      <br>
+      <br>
+      
+      npx expo start
       
    </li>
 </ol>
-1. 
 
-   
-
-2. Install dependencies:
-
-   npm i
-
-3. Start the project:
-
-   npx expo start
-
-After running the commands, Expo will start, and you can view the project in your web browser or on a mobile device using the Expo app.
+<h4>After running the commands, Expo will start. <br>
+Then you can view the project in your web browser or on a mobile device using the Expo app.</h4>
