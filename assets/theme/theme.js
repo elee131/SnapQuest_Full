@@ -1,24 +1,41 @@
 const theme ={
     light:{
-        theme: 'light', 
-        color: 'black', 
-        background: 'white',
-        backgroundHome: "#FFC0CB", 
-        snapColor: "#1A535C", 
-        timeColor: "#666666",
-        streakColor: "#1A535C", 
-        completeColor: '#FF6B6B',
+        // theme: 'light', 
+        // backgroundHome: "#FFC0CB", 
+        // snapColor: "#1A535C", 
+        // timeColor: "#666666",
+        // streakColor: "#1A535C", 
+        // completeColor: '#FF6B6B',
+        
+        content: "white",
+        background: "#FFF8F0",
+        color: "#2C241D",
+
+
+        light: "#FFF8F0",
+        midrange: "#F7CE5B", 
+        dark: "#FFA62B",
+     
 
     }, 
     dark:{
-        theme:'dark', 
-        color: 'white', 
-        background: "#DC3220",
-        backgroundHome: "#005AB5",
-        snapColor: "white", 
-        timeColor: "white", 
-        streakColor: "white", 
-        completeColor: "white",
+        // theme:'dark', 
+        // backgroundHome: "#005AB5",
+        // snapColor: "white", 
+        // timeColor: "white", 
+        // streakColor: "white", 
+        // completeColor: "white",
+
+        background: "#192734",
+        color: "#15292B",
+        content: "#888", 
+
+
+
+        light: "#95BFA0", 
+        midrange: "#568C69",
+        dark: "#0C403B", 
+    
     }
 }
 
