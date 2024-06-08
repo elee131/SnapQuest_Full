@@ -2,8 +2,6 @@
    📸 Snap Quest
 </h1>
 
-[![Collaborator](https://img.shields.io/badge/collaborator-3-yellow.svg)](https://github.com/Anica1004)
-
 <p align = "center">
 <img src="assets/headerImage.png?raw=true" alt="snapQuest Image Logo"  width="50%" height="50%" />
 </p>
@@ -86,6 +84,7 @@ To be Updated After completion of project
 
 ## Collaborators 
 <a name="collaborators"></a>
+[![Collaborator](https://img.shields.io/badge/collaborator-3-green.svg)](https://github.com/Anica1004)
 
 #### Frontend: 
 - [Anica Mok](https://github.com/Anica1004)
