@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, Animated} from 'react-native';
+import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import themeContext from '@/assets/theme/themeContext';
 import { useUser } from "../../context/UserContext";
 import LottieView from "lottie-react-native";
+// import { MaterialIcons } from '@expo/vector-icons';
+
 
 
 const Homescreen = () => {
@@ -43,6 +45,13 @@ const theme = useContext(themeContext)
         <Image source={questImage} style={styles.questImage}/>
         <Text style={[styles.questTitle , {color: theme.color}]}>TODAY'S QUEST:</Text>
         <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of the stunning cherry blossoms in bloom!"</Text>
+
+        <TouchableOpacity style={[styles.button, {backgroundColor: theme.dark }]}>
+          <Text style = {[styles.buttonText, {color: theme.color}]}>Change Quest
+          {/* <MaterialIcons name="change-circle" size={26} color="black"style={styles.buttonIcon} /></Text> */}
+          </Text>
+        </TouchableOpacity>
+        
         <Text style={[styles.questStatus, {color: theme.color}]}>{completeText()}!</Text>
       </View>
 
@@ -168,7 +177,25 @@ const styles = StyleSheet.create({
     padding: 0, 
     alignSelf: "center",
     justifyContent: "center",
-  }
+  }, 
+  button: {
+    width: "50%",
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    marginVertical: "5%", 
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    flexDirection: "row",
+  },
+  buttonText: {
+    fontFamily: "inter-bold",
+    alignSelf: "center",
+  },
 
 });
 
