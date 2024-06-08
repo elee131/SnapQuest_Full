@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  Switch
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { profile } from "@/assets/data/images";
@@ -15,8 +16,13 @@ import { useUser } from "../../context/UserContext";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
 import Gallery from "@/components/Gallery";
+import themeContext from '@/assets/theme/themeContext';
+import { EventRegister } from 'react-native-event-listeners';
 
 const Index = () => {
+  const theme = useContext(themeContext)
+  const [darkMode, setDarkMode] = useState(false)
+
   const {
     username,
     currStreak,
@@ -63,6 +69,18 @@ const Index = () => {
         <TouchableOpacity style={styles.logoutButton} onPress={handleVerification}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
+
+        <View style = {styles.toggle}>
+      <Text style = {styles.text}>Dark Mode</Text>
+      <Switch
+          value = {darkMode}   
+          onValueChange ={(value) => {
+           
+          setDarkMode(value);
+          EventRegister.emit('ChangeTheme', value)
+     }}
+      />
+      </View>
 
 
       <View style = {styles.topHalf}>
@@ -123,7 +141,7 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
     paddingVertical: 20,
-    marginTop: "5%", 
+    marginTop: "10%", 
   },
   profileContainer: {
     alignItems: "center",
@@ -217,6 +235,20 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 10,
+  },
+  toggle:{
+    flexDirection: 'row', 
+    position: "absolute",
+    alignItems: 'center', 
+    top: 0,
+    left: 20,
+    paddingBottom: 100, 
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    fontFamily: "inter-bold",
+    marginRight: "4%", 
   },
 });
 
