@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Tabs } from 'expo-router';
-import Colors from 'constants/Colors';
 import { MaterialCommunityIcons, AntDesign, MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { EventRegister } from 'react-native-event-listeners';
 import theme from 'assets/theme/theme';
 import themeContext from 'assets/theme/themeContext';
+
 
 
 const Main = ({ navigation }: any) => {
@@ -24,11 +24,18 @@ const Main = ({ navigation }: any) => {
     <themeContext.Provider value={darkMode ? theme.dark : theme.light}>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: Colors.primary,
+          tabBarActiveTintColor: darkMode ? theme.dark.navButton : theme.light.navButton,
+          tabBarActiveBackgroundColor: darkMode ? theme.dark.navColor : theme.light.navColor,
+          tabBarInactiveBackgroundColor: darkMode ? theme.dark.navColor : theme.light.navColor,
           tabBarLabelStyle: {
-            fontFamily: 'mon-sb',
+            fontFamily: 'inter-semi-bold',
+          },
+          tabBarStyle: {
+            borderTopWidth: darkMode ? 0 : 0.5,
+            borderTopColor: "#F7CE5B", 
           },
         }}
+        
       >
         {/* Home tab */}
         <Tabs.Screen

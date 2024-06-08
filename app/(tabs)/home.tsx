@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   },
   headerText: {
-    fontSize: 40,
+    fontSize: 38,
     fontFamily: 'inter-bold',
   },
   questCard: {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   questImage: {
     width: 300, // Set the width of the image
     height: 200, // Set the height of the image
-    borderRadius: 0, 
+    borderRadius: 10, 
     marginBottom: 16, // space between the image and the title text
   },
 

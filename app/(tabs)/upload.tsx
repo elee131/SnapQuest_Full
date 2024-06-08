@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
@@ -6,11 +6,13 @@ import * as FileSystem from 'expo-file-system';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useUser } from 'context/UserContext';
 import FallingLeavesBackground from '../../components/FallingLeavesBackground';
+import themeContext from '@/assets/theme/themeContext';
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
   const [labels, setLabels] = useState([]);
   const {  addImage } = useUser();
+  const theme = useContext(themeContext);
 
 
   const pickImage = async () => {
@@ -110,11 +112,11 @@ const UploadScreen = () => {
   };
 
   return (
-      <View style={styles.container}>
+      <View style={[styles.container, {backgroundColor: theme.background}]}>
         <FallingLeavesBackground/>
-      <View style={styles.uploadContainer}>
-        <Text style={styles.title}>Upload Your Photo!</Text>
-        <TouchableOpacity onPress={pickImage} style={styles.uploadButton}>
+      <View style={[styles.uploadContainer, {backgroundColor: theme.content, borderColor: theme.dark}]}>
+        <Text style={[styles.title, {color: theme.color}]}>Upload Your Photo!</Text>
+        <TouchableOpacity onPress={pickImage} style={[styles.uploadButton, {backgroundColor: theme.midrange}]}>
         <MaterialIcons name="add-a-photo" size={28} color="black" />
         </TouchableOpacity>
         {image && <Image source={{ uri: image }} style={styles.previewImage} />}
