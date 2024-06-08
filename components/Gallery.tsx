@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   StyleSheet,
   Image,
 } from "react-native";
-import { profile } from "@/assets/data/images";
 import { useUser } from "../context/UserContext";
+import themeContext from '@/assets/theme/themeContext';
 
 const Gallery = () => {
     const {images} = useUser();
+    const theme = useContext(themeContext)
 
     return(
-      <View style={styles.imagesContainer}>
+      <View style={[styles.imagesContainer, {backgroundColor: theme.content}]}>
           {images.map((image, index) => (
-            <View style={styles.picHolder} key={index}>
+            <View style={[styles.picHolder, {borderColor:theme.content}]} key={index}>
               <Image source={{ uri: image }} style={styles.image} />
             </View>
           ))}
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     paddingHorizontal: 20,
     marginTop: "5%", 
-    backgroundColor: "#fff", 
+    paddingVertical: "3%", 
     marginLeft: "3%",
     marginRight: "3%",
     borderRadius: 20, 
@@ -46,7 +47,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderWidth: 2, 
     borderRadius: 5,
-    borderColor: "#FFF8F0"
   },
 });
 export default Gallery

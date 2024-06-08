@@ -19,6 +19,7 @@ import Gallery from "@/components/Gallery";
 import themeContext from '@/assets/theme/themeContext';
 import { EventRegister } from 'react-native-event-listeners';
 
+
 const Index = () => {
   const theme = useContext(themeContext)
   const [darkMode, setDarkMode] = useState(false)
@@ -64,14 +65,14 @@ const Index = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, , {backgroundColor: theme.background}]}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleVerification}>
+        <TouchableOpacity style={[styles.logoutButton, {backgroundColor: theme.midrange}]} onPress={handleVerification}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
 
         <View style = {styles.toggle}>
-      <Text style = {styles.text}>Dark Mode</Text>
+      <Text style = {[styles.text, {color: theme.color}]}>Dark Mode</Text>
       <Switch
           value = {darkMode}   
           onValueChange ={(value) => {
@@ -83,11 +84,11 @@ const Index = () => {
       </View>
 
 
-      <View style = {styles.topHalf}>
+      <View style = {[styles.topHalf, {backgroundColor: theme.content, borderColor: theme.background}]}>
         <View style={styles.profileContainer}>
           <Image
             source={{ uri: profilePic || profile }}
-            style={styles.profileImage}
+            style={[styles.profileImage, {backgroundColor: theme.background}]}
           />
           <TouchableOpacity onPress={pickImage} style={styles.editIconContainer}>
             <Image
@@ -98,18 +99,18 @@ const Index = () => {
         </View>
 
         <View style={styles.profileText}>
-          <Text style={styles.username}>{username}</Text>
-          <Text style={styles.streakText}>
+          <Text style={[styles.username,{color: theme.color} ]}>{username}</Text>
+          <Text style={[styles.streakText, {color: theme.color}]}>
             Current Streak: {currStreak} days
             {'\n'}
             Longest Streak: {longestStreak} days
           </Text>
           </View>
           </View>
-          <View style={styles.rewardsContainer}>
-            <Text style={styles.rewardsText}>Current Rewards:</Text>
+          <View style={[styles.rewardsContainer, {backgroundColor: theme.content, borderColor: theme.background}]}>
+            <Text style={[styles.rewardsText, {color: theme.color}]}>Current Rewards:</Text>
 
-            <Text style={{ marginBottom: 10, fontFamily: "inter-bold", fontSize: 20}}>
+            <Text style={{ marginBottom: 10, fontFamily: "inter-bold", fontSize: 20, color: theme.color}}>
               <MaterialCommunityIcons
                 name="crown-outline"
                 size={28}
@@ -136,7 +137,6 @@ const Index = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#FFF8F0",
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -152,18 +152,15 @@ const styles = StyleSheet.create({
   topHalf: {
     marginTop: "8%", 
     marginHorizontal: "5%",
-    borderColor: "#FFF8F0",
     borderWidth: 3, 
     paddingBottom: "5%", 
     elevation: 5,
     borderRadius: 65, 
-    backgroundColor: "white", 
   },
   profileImage: {
     width: 130,
     height: 130,
     borderRadius: 65,
-    backgroundColor: "#FFF8F0", 
   },
   editIconContainer: {
     position: "absolute",
