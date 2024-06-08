@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   },
   headerText: {
-    fontSize: 40,
+    fontSize: 38,
     fontFamily: 'inter-bold',
   },
   questCard: {
