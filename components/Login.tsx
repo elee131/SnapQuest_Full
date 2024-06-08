@@ -1,14 +1,23 @@
-import React, { useState, useCallback } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState, useCallback } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from 'firebaseConfig';
-import { useUser } from '../context/UserContext';
-import { useFocusEffect } from '@react-navigation/native';
-import FallingLeavesBackground from './FallingLeavesBackground';
+import { auth } from "firebaseConfig";
+import { useUser } from "../context/UserContext";
+import { useFocusEffect } from "@react-navigation/native";
+// import FallingLeavesBackground from "./FallingLeavesBackground";
+import LottieView from "lottie-react-native";
+
 
 const LoginScreen = ({ navigation }: any) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { initUser } = useUser();
 
   const handleLogin = () => {
@@ -16,7 +25,7 @@ const LoginScreen = ({ navigation }: any) => {
       .then((userCredential) => {
         const user = userCredential.user;
         initUser(user.uid);
-        navigation.navigate('Main');
+        navigation.navigate("Main");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -26,31 +35,38 @@ const LoginScreen = ({ navigation }: any) => {
   };
 
   const handleCreateAccount = () => {
-    navigation.navigate('CreateAccount');
+    navigation.navigate("CreateAccount");
   };
 
   useFocusEffect(
     useCallback(() => {
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
     }, [])
   );
 
   return (
     <View style={styles.container}>
-      <FallingLeavesBackground />
       <View style={styles.secondContainer}>
+        
+      <LottieView
+          autoPlay
+          style={styles.sunflower}
+          source={require("../assets/animation/sunflower.json")}
+        />
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>Please log in to check your profile</Text>
         <TextInput
           style={styles.input}
           placeholder="Email"
+          placeholderTextColor="grey" 
           value={email}
           onChangeText={setEmail}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
+          placeholderTextColor="grey" 
           secureTextEntry={true}
           value={password}
           onChangeText={setPassword}
@@ -58,7 +74,10 @@ const LoginScreen = ({ navigation }: any) => {
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.createAccountButton} onPress={handleCreateAccount}>
+        <TouchableOpacity
+          style={styles.createAccountButton}
+          onPress={handleCreateAccount}
+        >
           <Text style={styles.createAccountText}>Create an Account</Text>
         </TouchableOpacity>
       </View>
@@ -68,7 +87,7 @@ const LoginScreen = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1, 
     backgroundColor: "#FFF8F0",
     justifyContent: 'center',
   },
@@ -79,62 +98,64 @@ const styles = StyleSheet.create({
     paddingVertical: "15%",
     borderWidth: 3, 
     alignItems: 'center',
-    marginRight: "2%", 
-    marginLeft: "2%",
     borderRadius: 2,
-    elevation:10, 
+    elevation:20, 
+    marginHorizontal: "5%", 
   },
   input: {
-    width: '100%',
+    width: "100%",
     height: 40,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   button: {
-    width: '100%',
+    width: "100%",
     height: 40,
     backgroundColor: "#F7CE5B",
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 5,
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontFamily: 'inter-semi-bold',
-  
+    fontFamily: "inter-semi-bold",
   },
   createAccountButton: {
     marginTop: 10,
-    width: '100%',
+    width: "100%",
     height: 40,
     backgroundColor: "#FFA62B",
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 5,
   },
   createAccountText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontFamily: 'inter-semi-bold'
+    fontFamily: "inter-semi-bold",
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: "black",
     marginBottom: 10,
-    fontFamily: 'inter-extra-bold'
+    fontFamily: "inter-extra-bold",
   },
   subtitle: {
     fontSize: 16,
     marginBottom: 20,
-    color: '#888',
-    fontFamily: 'inter-semi-bold'
+    color: "#888",
+    fontFamily: "inter-semi-bold",
   },
+  sunflower:{
+    width: 200, 
+    height: 200, 
+  }
 });
 
 export default LoginScreen;

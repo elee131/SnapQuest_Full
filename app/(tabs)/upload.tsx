@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import { useUser } from 'context/UserContext';
+import FallingLeavesBackground from '../../components/FallingLeavesBackground';
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
@@ -110,15 +111,15 @@ const UploadScreen = () => {
 
   return (
       <View style={styles.container}>
-        <ImageBackground source={require("@/assets/images/motiv.jpg")} style={styles.logoStyle}>
+        <FallingLeavesBackground/>
       <View style={styles.uploadContainer}>
         <Text style={styles.title}>Upload Your Photo!</Text>
         <TouchableOpacity onPress={pickImage} style={styles.uploadButton}>
-          <Text style={styles.uploadButtonText}>Tap to upload photo from camera</Text>
+        <MaterialIcons name="add-a-photo" size={28} color="black" />
         </TouchableOpacity>
         {image && <Image source={{ uri: image }} style={styles.previewImage} />}
       </View>
-      </ImageBackground>
+
     </View>
       
   );
@@ -126,48 +127,41 @@ const UploadScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#fff',
+    flex: 1, 
+    backgroundColor: '#FFF8F0',
+    justifyContent: 'center',
   },
   uploadContainer: {
-    marginTop: "55%",
     alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 25, 
-    marginLeft: 25, 
-    backgroundColor: "#FFA62B",
-    borderRadius: 20
-
+    marginHorizontal: "5%",
+    paddingHorizontal: "3%", 
+    paddingVertical: "5%", 
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    borderColor: "#FFA62B",
+    borderWidth: 5,
+    elevation: 10, 
   },
   title: {
     fontSize: 25,
-    marginTop: 12,
-    marginBottom: 20,
+    marginTop: "3%", 
+    marginBottom: "3%", 
+    color: "#2C241D",
     fontFamily: "inter-bold",
   },
   uploadButton: {
-    backgroundColor: '#e7e7e7',
+    backgroundColor: '#F7CE5B',
     padding: 15,
     borderRadius: 10,
-    marginBottom: 20,
-  },
-  uploadButtonText: {
-    fontSize: 15,
-    fontFamily: "inter",
-    color: '#4a4a4a',
+    marginTop: 10, 
+    alignItems: 'center',
   },
   previewImage: {
     width: 300,
     height: 300,
     borderRadius: 10,
-  },
-  logoStyle: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
-  }
+    marginTop: 10, 
+  },  
 });
 
 export default UploadScreen;
