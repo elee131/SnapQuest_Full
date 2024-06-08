@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: "inter-bold",
     alignSelf: "center",
+    fontSize: 16, 
   },
 
 });
