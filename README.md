@@ -1,5 +1,11 @@
-# Snap Quest
-![Alt text](assets/headerImage.png?raw=true "Title")
+<h1 align ="center">
+   Snap Quest
+</h1>
+
+<p align = "center">
+<img src="assets/headerImage.png?raw=true" alt="snapQuest Image Logo"  width="50%" height="50%" />
+</p>
+
 ## Table Of Contents
 - Requirements
 - Recommended modules
