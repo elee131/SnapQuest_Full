@@ -9,6 +9,11 @@
 ## Description
 SnapQuest offers our users a daily "Quest" target to take a picture of. An example of a quest may be something like "take a picture of cherry blossoms". The targets are carefully crafted to get our users to take a stroll and enjoy nature, promoting staying active and and taking a moment to breathe.
 
+### Background 
+The inital concept of the Snap Quest app originated during the "YouCode" hackathon at UBC. Driven by our passion to see it flourish and improve, we committed to its further development. This dedication motivated us to spend our summer break advancing this project, spanning from April 2024 to September 2024. 
+
+
+
 ### Techologies Used
 
 ![Javascript](https://img.shields.io/badge/Javascript-F0DB4F?style=for-the-badge&labelColor=black&logo=javascript&logoColor=F0DB4F)
