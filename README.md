@@ -1,4 +1,6 @@
-# snapQuest
+# Snap Quest
+
+## Table Of Contents
 
 Prerequisites
 Before you begin, ensure you have npm installed on your machine. If you don't have npm installed, you can download and install it from npm's official website.
