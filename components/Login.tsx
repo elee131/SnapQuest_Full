@@ -14,6 +14,7 @@ import { useFocusEffect } from "@react-navigation/native";
 // import FallingLeavesBackground from "./FallingLeavesBackground";
 import LottieView from "lottie-react-native";
 
+
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,16 +47,13 @@ const LoginScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      {/* <FallingLeavesBackground /> */}
-      <View>
-        <LottieView
+      <View style={styles.secondContainer}>
+        
+      <LottieView
           autoPlay
           style={styles.sunflower}
-          // Find more Lottie files at https://lottiefiles.com/featured
           source={require("../assets/animation/sunflower.json")}
         />
-      </View>
-      <View style={styles.secondContainer}>
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>Please log in to check your profile</Text>
         <TextInput
@@ -94,7 +92,9 @@ const styles = StyleSheet.create({
     borderColor: "#FFF8F0",
     paddingHorizontal: "10%",
     backgroundColor: "#fff",
-    paddingVertical: "15%",
+    paddingVertical: "10%",
+    marginVertical: "25%",
+    justifyContent: "center",
     borderWidth: 3,
     alignItems: "center",
     marginRight: "2%",
@@ -155,8 +155,6 @@ const styles = StyleSheet.create({
   sunflower:{
     width: 200, 
     height: 200, 
-    alignSelf: "center", 
-    marginTop: "2%"
   }
 });
 
