@@ -59,12 +59,14 @@ const LoginScreen = ({ navigation }: any) => {
         <TextInput
           style={styles.input}
           placeholder="Email"
+          placeholderTextColor="grey" 
           value={email}
           onChangeText={setEmail}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
+          placeholderTextColor="grey" 
           secureTextEntry={true}
           value={password}
           onChangeText={setPassword}
@@ -85,22 +87,20 @@ const LoginScreen = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1, 
     backgroundColor: "#FFF8F0",
+    justifyContent: 'center',
   },
   secondContainer: {
     borderColor: "#FFF8F0",
-    paddingHorizontal: "10%",
+    paddingHorizontal: "10%", 
     backgroundColor: "#fff",
-    paddingVertical: "10%",
-    marginVertical: "25%",
-    justifyContent: "center",
-    borderWidth: 3,
-    alignItems: "center",
-    marginRight: "2%",
-    marginLeft: "2%",
+    paddingVertical: "15%",
+    borderWidth: 3, 
+    alignItems: 'center',
     borderRadius: 2,
-    elevation: 10,
+    elevation:20, 
+    marginHorizontal: "5%", 
   },
   input: {
     width: "100%",

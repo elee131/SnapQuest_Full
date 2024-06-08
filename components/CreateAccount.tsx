@@ -4,8 +4,8 @@ import { createUserWithEmailAndPassword , User} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 import {  db , auth } from 'firebaseConfig';
 import { useUser } from '../context/UserContext';
-import FallingLeavesBackground from './FallingLeavesBackground';
-
+// import FallingLeavesBackground from './FallingLeavesBackground';
+import LottieView from "lottie-react-native";
 
 
 const CreateAccountScreen = ({navigation}: any) => {
@@ -59,25 +59,34 @@ const CreateAccountScreen = ({navigation}: any) => {
   return (
   
     <View style={styles.container}>
-      <FallingLeavesBackground/>
+      {/* <FallingLeavesBackground/> */}
       <View style={styles.secondContainer}>
+
+      <LottieView
+          autoPlay
+          style={styles.pinkflower}
+          source={require("../assets/animation/pinkflower.json")}
+        />
       <Text style={styles.title}>Create an Account</Text>
 
       <TextInput
         style={styles.input}
         placeholder="User Name"
+        placeholderTextColor="grey" 
         value={name}
         onChangeText={setName}
       />
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="grey" 
         value={email}
         onChangeText={setEmail}
       />
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor="grey" 
         secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
@@ -97,7 +106,7 @@ const CreateAccountScreen = ({navigation}: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Ensure the container stretches to fill available space
+    flex: 1, 
    backgroundColor: "#FFF8F0",
     justifyContent: 'center',
   },
@@ -105,13 +114,12 @@ const styles = StyleSheet.create({
     borderColor: "#FFF8F0",
     paddingHorizontal: "10%", 
     backgroundColor: "#fff",
-    paddingVertical: "15%",
+    paddingVertical: "10%",
     borderWidth: 3, 
     alignItems: 'center',
-    marginRight: "2%", 
-    marginLeft: "2%",
     borderRadius: 2,
-    elevation:10, 
+    elevation:20, 
+    marginHorizontal: "5%", 
 
   }, 
 
@@ -130,6 +138,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
     backgroundColor: '#fff',
+    fontFamily: "inter", 
   },
   button: {
     width: '100%',
@@ -154,6 +163,10 @@ const styles = StyleSheet.create({
     fontFamily: 'inter-semi-bold',
     fontSize: 16,
   },
+  pinkflower:{
+    width: 200, 
+    height: 200, 
+  }
 });
 
 export default CreateAccountScreen;
