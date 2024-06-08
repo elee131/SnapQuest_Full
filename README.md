@@ -31,7 +31,7 @@ SnapQuest offers our users a daily "Quest" target to take a picture of. An examp
 
 ## Background  
 <a name="background"></a>
-The inital concept of the Snap Quest app originated during the "YouCode" hackathon at UBC. Driven by our passion to see it flourish and improve, we committed to its further development. This dedication motivated us to spend our summer break advancing this project, spanning from April 2024 to September 2024. 
+The inital idea of Snap Quest was brought up during the "YouCode" hackathon at UBC. Driven by our passion to see it flourish and improve, we committed to its further development. This dedication motivated us to spend our summer break advancing this project, spanning from April 2024 to September 2024. 
 
 ## Install and Run Snap Quest 
 <a name="install_and_run"></a>
