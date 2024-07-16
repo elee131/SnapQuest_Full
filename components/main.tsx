@@ -4,7 +4,7 @@ import { MaterialCommunityIcons, AntDesign, MaterialIcons, FontAwesome } from '@
 import { EventRegister } from 'react-native-event-listeners';
 import theme from 'assets/theme/theme';
 import themeContext from 'assets/theme/themeContext';
-
+import { FontAwesome6 } from '@expo/vector-icons';
 
 
 const Main = ({ navigation }: any) => {
@@ -47,14 +47,14 @@ const Main = ({ navigation }: any) => {
             tabBarIcon: ({ color, size }) => <AntDesign name="home" size={24} color={color} />,
           }}
         />
-        {/* Rewards tab */}
+        {/* Ranking tab */}
         <Tabs.Screen
           name="ranking"
           options={{
             tabBarLabel: 'Ranking',
             title: 'Ranking',
             headerShown: false, 
-            tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="star-four-points-outline" size={24} color={color} />,
+            tabBarIcon: ({ color, size }) => <FontAwesome6 name="ranking-star" size={24} color={color} />,
           }}
         />
         {/* Upload tab */}
