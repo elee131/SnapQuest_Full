@@ -49,10 +49,10 @@ const Main = ({ navigation }: any) => {
         />
         {/* Rewards tab */}
         <Tabs.Screen
-          name="rewards"
+          name="ranking"
           options={{
-            tabBarLabel: 'Rewards',
-            title: 'Rewards',
+            tabBarLabel: 'Ranking',
+            title: 'Ranking',
             headerShown: false, 
             tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="star-four-points-outline" size={24} color={color} />,
           }}
