@@ -85,7 +85,7 @@ To be Updated After completion of project
 
 ## Collaborators 
 <a name="collaborators"></a>
-[![Collaborator](https://img.shields.io/badge/collaborator-3-green.svg)](https://github.com/Anica1004)
+[![Collaborator](https://img.shields.io/badge/collaborator-2-green.svg)](https://github.com/Anica1004)
 
 #### Frontend: 
 - [Anica Mok](https://github.com/Anica1004)
