@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, Image, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, FlatList,  ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
@@ -13,7 +13,7 @@ const mockUserPosts = [
 
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
-
+  const theme = useContext(themeContext);
   const handleSearch = (text) => {
     setSearchText(text);
     onSearch(text);
@@ -40,6 +40,8 @@ const SearchBar = ({ onSearch }) => {
 };
 
 const UserPost = ({ post }) => {
+  const theme = useContext(themeContext);
+
   return (
     <View style={styles.postContainer}>
       <Image source={post.postImage} style={styles.postImage} />
@@ -50,6 +52,7 @@ const UserPost = ({ post }) => {
 
 const Following = () => {
   const [filteredPosts, setFilteredPosts] = useState(mockUserPosts);
+  const theme = useContext(themeContext);
 
   const handleSearch = (searchText) => {
     const filtered = mockUserPosts.filter(post => post.username.toLowerCase().includes(searchText.toLowerCase()));
@@ -58,7 +61,6 @@ const Following = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-       
       <View style={styles.container}>
         <TouchableOpacity>
           <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
@@ -91,8 +93,6 @@ const styles = StyleSheet.create({
     marginTop: "10%",
     flex: 1,
     backgroundColor: '#fff',
-   
-
   },
   container: {
     height: 60,
