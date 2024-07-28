@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import themeContext from '@/assets/theme/themeContext';
 
 // Mock user posts data
@@ -15,6 +15,7 @@ const mockUserPosts = [
 
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
+  const theme = useContext(themeContext);
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -23,8 +24,8 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <View style={styles.searchContainer}>
-      <View style={styles.searchField}>
-        <Ionicons style={styles.searchIcon} name='search' size={20} color={Colors.medium} />
+      <View style={[styles.searchField]}>
+        <Ionicons style={styles.searchIcon} name='search' size={20} color={theme.background} />
         <TextInput
           style={styles.input}
           placeholder="Search"
@@ -72,7 +73,7 @@ const Following = () => {
             <Ionicons name='chevron-down' size={20} color={Colors.primary} />
           </View>
         </View>
-        <TouchableOpacity style={styles.profileButton}>
+        <TouchableOpacity style={[styles.profileButton, {backgroundColor:theme.background}]}>
           <Ionicons name="person-outline" size={20} color="blue" />
         </TouchableOpacity>
       </View>
@@ -89,8 +90,8 @@ const Following = () => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    marginTop: "10%",
     flex: 1,
+    backgroundColor: '#fff',
   },
   headerContainer: {
     height: 60,
@@ -105,7 +106,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    color: Colors.medium,
   },
   subtitle: {
     fontSize: 18,
@@ -138,6 +138,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
+    elevation: 10, 
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
   },
   input: {
     flex: 1,
