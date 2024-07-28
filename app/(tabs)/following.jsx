@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, Image, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, FlatList,  ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import themeContext from '@/assets/theme/themeContext';
 import Colors from '@/constants/Colors';
 
 // Mock user posts data
