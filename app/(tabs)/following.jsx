@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, Image, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, FlatList,  ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import themeContext from '@/assets/theme/themeContext';
 import Colors from '@/constants/Colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import themeContext from '@/assets/theme/themeContext';
 
 // Mock user posts data
 const mockUserPosts = [
@@ -14,7 +15,7 @@ const mockUserPosts = [
 
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
-  const theme = useContext(themeContext);
+
   const handleSearch = (text) => {
     setSearchText(text);
     onSearch(text);
@@ -41,8 +42,6 @@ const SearchBar = ({ onSearch }) => {
 };
 
 const UserPost = ({ post }) => {
-  const theme = useContext(themeContext);
-
   return (
     <View style={styles.postContainer}>
       <Image source={post.postImage} style={styles.postImage} />
@@ -52,8 +51,8 @@ const UserPost = ({ post }) => {
 };
 
 const Following = () => {
-  const [filteredPosts, setFilteredPosts] = useState(mockUserPosts);
   const theme = useContext(themeContext);
+  const [filteredPosts, setFilteredPosts] = useState(mockUserPosts);
 
   const handleSearch = (searchText) => {
     const filtered = mockUserPosts.filter(post => post.username.toLowerCase().includes(searchText.toLowerCase()));
@@ -61,15 +60,15 @@ const Following = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
+      <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity>
           <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
         </TouchableOpacity>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Other Users</Text>
+          <Text style={[styles.title, { color: theme.color }]}>Other Users</Text>
           <View style={styles.locationName}>
-            <Text style={styles.subtitle}>Search</Text>
+            <Text style={[styles.subtitle, { color: theme.color }]}>Search</Text>
             <Ionicons name='chevron-down' size={20} color={Colors.primary} />
           </View>
         </View>
@@ -78,13 +77,12 @@ const Following = () => {
         </TouchableOpacity>
       </View>
       <SearchBar onSearch={handleSearch} />
-      {/* Render user posts */}
       <FlatList
         data={filteredPosts}
         renderItem={({ item }) => <UserPost post={item} />}
         keyExtractor={item => item.id.toString()}
+        contentContainerStyle={[styles.postsContainer, { backgroundColor: theme.background }]}
       />
-    
     </SafeAreaView>
   );
 };
@@ -93,15 +91,13 @@ const styles = StyleSheet.create({
   safeArea: {
     marginTop: "10%",
     flex: 1,
-    backgroundColor: '#fff',
   },
-  container: {
+  headerContainer: {
     height: 60,
-    backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    marginTop: 20, 
+    marginTop: 20,
   },
   titleContainer: {
     marginLeft: 20,
@@ -113,22 +109,23 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   profileButton: {
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 10,
-
   },
   iconStyle: {
     width: 20,
-    height: 20
+    height: 20,
   },
-  locationName: { flexDirection: 'row', alignItems: 'center' },
+  locationName: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   searchContainer: {
     height: 60,
-    backgroundColor: '#fff',
     paddingHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
@@ -154,13 +151,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   postsContainer: {
-    flex: 1,
-    marginTop: 20,
     paddingHorizontal: 20,
   },
   postContainer: {
     marginBottom: 20,
-    paddingHorizontal: 20,
   },
   postImage: {
     width: '100%',

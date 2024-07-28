@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
   imagesContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
     paddingHorizontal: 20,
     marginTop: "5%", 
     paddingVertical: "3%", 
