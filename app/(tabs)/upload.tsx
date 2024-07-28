@@ -15,6 +15,7 @@ const UploadScreen = () => {
   const theme = useContext(themeContext);
 
 
+
   const pickImage = async () => {
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -24,12 +25,49 @@ const UploadScreen = () => {
     });
 
     if (!result.canceled) {
-
-      analyzeImage(result.assets[0].uri);
-      setImage(result.assets[0].uri);
-      
+      analyzeImage(result.assets[0].uri);      
     }
   };
+
+  const handleUpload = async (uri : string) => {
+    console.log("in handle upload")
+    try {
+      let imageURL
+
+      if (!uri) {
+        console.log("empty url")
+        return
+      }
+
+      const image = new FormData();
+      const img = {
+        uri: uri,
+        type: 'image/jpeg', // or the appropriate mime type of the file
+        name: 'upload.jpg' // the name of the file
+      };
+      image.append("file", img);
+      image.append("cloud_name", "du40sblw6");
+      image.append("upload_preset", "userImage");
+
+      const response = await fetch (
+        "https://api.cloudinary.com/v1_1/du40sblw6/image/upload",
+        {
+          method: "post",
+          body: image
+          
+        }
+      );
+      const imgData = await response.json();
+      imageURL = imgData.secure_url.toString();      
+      console.log(imageURL)
+      addImage(imageURL)
+
+
+    } catch (error) {
+      console.log("caught error:", error);
+    }
+  }
+
 
 
   const analyzeImage = async (uri : string) => {
@@ -60,11 +98,11 @@ const UploadScreen = () => {
       const apiResponse = await axios.post(apiUrl, requestData);
 
       setLabels(apiResponse.data.responses[0].labelAnnotations);
-      const variableString = ['green', 'grass', 'aqua', 'bottle', 'drink', 'cup', 'Plastic bottle', 'glass', 'circle', 'liquid', 'drinkware']; 
+      const variableString = ['desk', 'brown', 'beige', 'bottle', 'drink', 'cup', 'Plastic bottle', 'glass', 'circle', 'liquid', 'drinkware']; 
       const hasMatch = parseResponse(apiResponse.data.responses[0], variableString);
       if (hasMatch) {
         showAlert("Success!");
-        addImage(uri);
+        handleUpload(uri)
       } else {
         showAlert("Hmm, that doesnt seem correct. Try again");
       }
@@ -89,7 +127,7 @@ const UploadScreen = () => {
       matchedDescriptions.push(annotation.description);
       if (variableString.includes(annotation.description.toLowerCase())) {
         foundMatch = true;
-
+        break
       }
     }
   

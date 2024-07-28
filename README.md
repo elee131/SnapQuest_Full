@@ -15,7 +15,7 @@ SnapQuest offers our users a daily "Quest" target to take a picture of. An examp
 ![Javascript](https://img.shields.io/badge/Javascript-F0DB4F?style=for-the-badge&labelColor=black&logo=javascript&logoColor=F0DB4F)
 ![Typescript](https://img.shields.io/badge/Typescript-007acc?style=for-the-badge&labelColor=black&logo=typescript&logoColor=007acc)
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
@@ -85,14 +85,13 @@ To be Updated After completion of project
 
 ## Collaborators 
 <a name="collaborators"></a>
-[![Collaborator](https://img.shields.io/badge/collaborator-3-green.svg)](https://github.com/Anica1004)
+[![Collaborator](https://img.shields.io/badge/collaborator-2-green.svg)](https://github.com/Anica1004)
 
 #### Frontend: 
 - [Anica Mok](https://github.com/Anica1004)
 
 #### Backend: 
 - [Eojin Lee](https://github.com/elee131)
-- [Erika Tian](https://github.com/ErikaTian)
 
 ## License
 This project is licensed under <b>All Rights Reserved</b>. All rights to the code and associated materials are reserved. This code may only be viewed by recruiters for evaluation purposes and may not be copied, modified, or distributed without explicit permission from the author.
