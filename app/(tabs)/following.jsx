@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Image, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, FlatList,  ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 
@@ -58,6 +58,7 @@ const Following = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+         <ScrollView>
       <View style={styles.container}>
         <TouchableOpacity>
           <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
@@ -80,12 +81,14 @@ const Following = () => {
         renderItem={({ item }) => <UserPost post={item} />}
         keyExtractor={item => item.id.toString()}
       />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   safeArea: {
+    marginTop: "10%",
     flex: 1,
     backgroundColor: '#fff',
    
