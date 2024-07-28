@@ -5,10 +5,8 @@ import themeContext from '@/assets/theme/themeContext';
 import { useUser } from "../../context/UserContext";
 import { profile } from "@/assets/data/images";
 
-
 const RewardScreen = () => {
   const theme = useContext(themeContext);
-
 
   const getBorderColor = (rank: number) => {
     switch (rank) {
@@ -19,29 +17,33 @@ const RewardScreen = () => {
     }
   };
 
+  // Fake user data without ranking
   const fakeUserData = [
     {
       username: 'Anica',
       profilePic: 'https://media.istockphoto.com/id/1443562748/photo/cute-ginger-cat.jpg?s=1024x1024&w=is&k=20&c=QaEkKC7lFEBrzzPftMRBVuOZq4FNOnUjOV1VqTmpMfY=',
-      ranking: 1,
       currStreak: 20,
-      points: 1500,
+      points: 1305,
     },
     {
       username: 'Jenny',
       profilePic: 'https://media.istockphoto.com/id/1201112520/photo/planting-tree-in-garden-concept-save-world-green-earth.jpg?s=1024x1024&w=is&k=20&c=ATz1X5frL8nlset8lIt_xq9R0aYaKdQ_OjrBagIhdMw=',
-      ranking: 2,
       currStreak: 18,
-      points: 1400,
+      points: 1703,
     },
     {
       username: 'Seva',
       profilePic: 'https://media.istockphoto.com/id/1257951336/photo/transparent-umbrella-under-rain-against-water-drops-splash-background-rainy-weather-concept.jpg?s=1024x1024&w=is&k=20&c=U6uwI27fEfgEAl9j_Hz848FgLRidd9Ww0kPCkc0FZB8=',
-      ranking: 3,
       currStreak: 15,
-      points: 1300,
+      points: 1500,
     },
   ];
+
+
+  const sortedByStreak = [...fakeUserData].sort((a, b) => b.currStreak - a.currStreak);
+
+
+  const sortedByPoints = [...fakeUserData].sort((a, b) => b.points - a.points);
 
   const { username, currStreak, profilePic, point } = useUser();
 
@@ -55,9 +57,9 @@ const RewardScreen = () => {
         </View>
 
         <View>
-          <Text style={[styles.Heading, { color: theme.color },]}>Longest Current Streak</Text>
+          <Text style={[styles.Heading, { color: theme.color }]}>Longest Current Streak</Text>
 
-          <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5}]}>
+          <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5 }]}>
             <View style={styles.userInfo}>
               <Image
                 source={{ uri: profilePic || profile }}
@@ -66,23 +68,22 @@ const RewardScreen = () => {
               <Text style={[styles.username, { color: theme.color }]}>{username} (YOU)</Text>
             </View>
             <View>
-              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: 57</Text>
+              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: 7</Text>
               <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Current Streak: {currStreak}</Text>
             </View>
           </View>
         </View>
 
-        {fakeUserData.map((user, index) => (
+        {sortedByStreak.map((user, index) => (
           <View key={index} style={[styles.userRanking, { backgroundColor: theme.content }]}>
             <View style={styles.userInfo}>
-            <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{user.ranking}</Text>
+              <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
               <Image
                 source={{ uri: user.profilePic || profile }}
-                style={[styles.profileImage, { backgroundColor: theme.background,}]}
+                style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color, marginRight: 7 }]}>{user.username}</Text>
-              <FontAwesome5 name="medal" size={24} color = {getBorderColor(user.ranking)} />
-
+              <FontAwesome5 name="medal" size={24} color={getBorderColor(index + 1)} />
             </View>
             <View>
               <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Current Streak: {user.currStreak}</Text>
@@ -93,21 +94,39 @@ const RewardScreen = () => {
         <View>
           <Text style={[styles.Heading, { color: theme.color }]}>Point Ranking</Text>
 
-          <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5}]}>
+          <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5 }]}>
             <View style={styles.userInfo}>
               <Image
                 source={{ uri: profilePic || profile }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
-              <Text style={[styles.username, { color: theme.color }]}>{username} (YOU)</Text>
+              <Text style={[styles.username, { color: theme.color}]}>{username} (YOU)</Text>
             </View>
             <View>
-              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: 13</Text>
-              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points: {point}</Text>
+              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: 5</Text>
+              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points : {point}</Text>
             </View>
           </View>
-        </View>
 
+
+
+          {sortedByPoints.map((user, index) => (
+            <View key={index} style={[styles.userRanking, { backgroundColor: theme.content, }]}>
+              <View style={styles.userInfo}>
+              <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
+                <Image
+                  source={{ uri: user.profilePic || profile }}
+                  style={[styles.profileImage, { backgroundColor: theme.background }]}
+                />
+                <Text style={[styles.username, { color: theme.color ,marginRight: 7  }]}>{user.username}</Text>
+                <FontAwesome5 name="medal" size={24} color={getBorderColor(index + 1)} />
+              </View>
+              <View>
+                <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points: {user.points}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
 
       </ScrollView>
     </SafeAreaView>
@@ -147,7 +166,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333333',
     paddingHorizontal: 20,
-    marginBottom: "5%" , 
+    marginBottom: "5%",
     marginTop: "10%",
   },
   userRanking: {
