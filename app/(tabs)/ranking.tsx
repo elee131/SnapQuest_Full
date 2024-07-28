@@ -2,11 +2,19 @@ import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import themeContext from '@/assets/theme/themeContext';
-
+import { useUser } from "../../context/UserContext";
+import {Image} from "react-native";
+import { profile } from "@/assets/data/images";
 
 const RewardScreen = () => {
   const theme = useContext(themeContext)
-  const [darkMode, setDarkMode] = useState(false)
+
+  const {
+    username,
+    currStreak,
+    profilePic,
+    point,
+  } = useUser();
 
   return (
 
@@ -17,16 +25,27 @@ const RewardScreen = () => {
       </View>
 
       <View>
-      <Text style={[styles.Heading, {color: theme.color}, {marginBottom: 10}]}>Longest Streak</Text>
+      <Text style={[styles.Heading, {color: theme.color}, {marginBottom: 10}]}>Longest Current Streak</Text>
 
       <View style = {[styles.userRanking, {backgroundColor: theme.content}]}>
-        
+      
+
+      <View><Image
+            source={{ uri: profilePic || profile }}
+            style={[styles.profileImage, {backgroundColor: theme.background}]}
+          />
+        <Text>{username}</Text>
+        </View>
+        <Text>YOU</Text>
+
+
+    
       </View>
 
       </View>
 
       <View>
-      <Text style={[styles.Heading, {color: theme.color}]}>Monthly Point Ranking</Text>
+      <Text style={[styles.Heading, {color: theme.color}]}>Point Ranking</Text>
       </View>
 
       </View>
@@ -37,6 +56,7 @@ const RewardScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    fontFamily: 'inter', 
     flex: 1,
     backgroundColor: '#F7F7F7',
   },
@@ -76,8 +96,15 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10, 
-  }
+    borderRadius: 10,
+    flexDirection: "row", 
+  }, 
+  profileImage: {
+    width: 55,
+    height: 55,
+    borderRadius: 65,
+
+  },
 });
 
 export default RewardScreen;
