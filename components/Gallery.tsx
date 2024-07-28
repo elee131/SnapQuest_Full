@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
   imagesContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     paddingHorizontal: 20,
     marginTop: "5%", 
     paddingVertical: "3%", 
-    marginLeft: "3%",
-    marginRight: "3%",
+    marginHorizontal: "5%", 
     borderRadius: 20, 
+    marginBottom: "5%"
   },
   image: {
     width: "100%",
