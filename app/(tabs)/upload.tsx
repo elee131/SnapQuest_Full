@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
@@ -11,7 +11,7 @@ import themeContext from '@/assets/theme/themeContext';
 const UploadScreen = () => {
   const [image, setImage] = useState("");
   const [labels, setLabels] = useState([]);
-  const {  addImage } = useUser();
+  const {  addImage, setCurrStreak, currStreak, longestStreak, setLongestStreak, completedDaily, setCompletedDaily, setPoint , point} = useUser();
   const theme = useContext(themeContext);
 
 
@@ -61,11 +61,25 @@ const UploadScreen = () => {
       imageURL = imgData.secure_url.toString();      
       console.log(imageURL)
       addImage(imageURL)
+      updateUserData()
 
 
     } catch (error) {
       console.log("caught error:", error);
     }
+  }
+
+  const updateUserData = () => {
+    if (!completedDaily) {
+      setCompletedDaily(true);
+      setCurrStreak(currStreak + 1);
+      if (longestStreak < currStreak) {
+        setLongestStreak(currStreak)
+      }
+    }
+
+    setPoint(point + 50);
+    
   }
 
 
