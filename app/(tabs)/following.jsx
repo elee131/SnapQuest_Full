@@ -43,10 +43,11 @@ const SearchBar = ({ onSearch }) => {
 };
 
 const UserPost = ({ post }) => {
+  const theme = useContext(themeContext);
   return (
-    <View style={styles.postContainer}>
+    <View style={[styles.postContainer, {backgroundColor: theme.content}]}>
       <Image source={post.postImage} style={styles.postImage} />
-      <Text style={styles.username}>Picture by {post.username}</Text>
+      <Text style={[styles.username, {color: theme.color}]}>Picture by {post.username}</Text>
     </View>
   );
 };
@@ -74,10 +75,11 @@ const Following = () => {
           </View>
         </View>
         <TouchableOpacity style={[styles.profileButton, {backgroundColor:theme.background}]}>
-          <Ionicons name="person-outline" size={20} color="blue" />
+          <Ionicons name="person-outline" size={20} color={theme.dark} />
         </TouchableOpacity>
       </View>
       <SearchBar onSearch={handleSearch} />
+
       <FlatList
         data={filteredPosts}
         renderItem={({ item }) => <UserPost post={item} />}
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: "7%"
   },
   searchField: {
     flex: 1,
@@ -157,15 +160,20 @@ const styles = StyleSheet.create({
   },
   postsContainer: {
     paddingHorizontal: 20,
+    flex: 1, 
   },
   postContainer: {
     marginBottom: 20,
+    paddingVertical: 10, 
+    borderRadius: 20, 
+    alignItems: 'center',
+    elevation: 2, 
   },
   postImage: {
-    width: '100%',
+    width: '80%',
     height: 200,
     borderRadius: 10,
-    marginBottom: 10,
+    marginVertical: 10,
   },
   username: {
     fontSize: 16,
