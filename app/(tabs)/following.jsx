@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
@@ -45,9 +45,9 @@ const SearchBar = ({ onSearch }) => {
 const UserPost = ({ post }) => {
   const theme = useContext(themeContext);
   return (
-    <View style={[styles.postContainer, {backgroundColor: theme.content}]}>
+    <View style={[styles.postContainer, { backgroundColor: theme.content }]}>
       <Image source={post.postImage} style={styles.postImage} />
-      <Text style={[styles.username, {color: theme.color}]}>Picture by {post.username}</Text>
+      <Text style={[styles.username, { color: theme.color }]}>Picture by {post.username}</Text>
     </View>
   );
 };
@@ -63,29 +63,30 @@ const Following = () => {
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
-      <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
-        <TouchableOpacity>
-          <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
-        </TouchableOpacity>
-        <View style={styles.titleContainer}>
-          <Text style={[styles.title, { color: theme.color }]}>Other Users</Text>
-          <View style={styles.locationName}>
-            <Text style={[styles.subtitle, { color: theme.color }]}>Search</Text>
-            <Ionicons name='chevron-down' size={20} color={Colors.primary} />
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
+          <TouchableOpacity>
+            <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
+          </TouchableOpacity>
+          <View style={styles.titleContainer}>
+            <Text style={[styles.title, { color: theme.color }]}>Other Users</Text>
+            <View style={styles.locationName}>
+              <Text style={[styles.subtitle, { color: theme.color }]}>Search</Text>
+              <Ionicons name='chevron-down' size={20} color={Colors.primary} />
+            </View>
           </View>
+          <TouchableOpacity style={[styles.profileButton, { backgroundColor: theme.background }]}>
+            <Ionicons name="person-outline" size={20} color={theme.dark} />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={[styles.profileButton, {backgroundColor:theme.background}]}>
-          <Ionicons name="person-outline" size={20} color={theme.dark} />
-        </TouchableOpacity>
-      </View>
-      <SearchBar onSearch={handleSearch} />
-
-      <FlatList
-        data={filteredPosts}
-        renderItem={({ item }) => <UserPost post={item} />}
-        keyExtractor={item => item.id.toString()}
-        contentContainerStyle={[styles.postsContainer, { backgroundColor: theme.background }]}
-      />
+        <SearchBar onSearch={handleSearch} />
+        <FlatList
+          data={filteredPosts}
+          renderItem={({ item }) => <UserPost post={item} />}
+          keyExtractor={item => item.id.toString()}
+          contentContainerStyle={[styles.postsContainer, { backgroundColor: theme.background }]}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -94,6 +95,9 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  scrollViewContent: {
+    flexGrow: 1,
   },
   headerContainer: {
     height: 60,
@@ -132,7 +136,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: "7%"
+    marginBottom: "7%",
   },
   searchField: {
     flex: 1,
@@ -160,18 +164,18 @@ const styles = StyleSheet.create({
   },
   postsContainer: {
     paddingHorizontal: 20,
-    flex: 1, 
+    flexGrow: 1,
   },
   postContainer: {
-    marginBottom: 20,
-    paddingVertical: 10, 
-    borderRadius: 20, 
+    marginBottom: 15,
+    paddingVertical: 10,
+    borderRadius: 20,
     alignItems: 'center',
-    elevation: 2, 
+    elevation: 2,
   },
   postImage: {
-    width: '80%',
-    height: 200,
+    width: '90%',
+    height: 150,
     borderRadius: 10,
     marginVertical: 10,
   },
