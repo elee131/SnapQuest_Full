@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from 'firebaseConfig'; // Adjust the import according to your project structure
+import {useQuest} from './questContext';
 
 interface UserContextType {
   userUID: string | null;
@@ -12,6 +13,7 @@ interface UserContextType {
   completedDaily: boolean;
   images: string[];
   profilePic: string;
+  currentQuest: string;
 }
 
 interface UserContextProviderType extends UserContextType {
@@ -25,6 +27,7 @@ interface UserContextProviderType extends UserContextType {
   setCompletedDaily: (completedDaily: boolean) => void;
   setImages: (images: string[]) => void;
   setProfilePic: (profilePic: string) => void;
+  setCurrentQuest: (questID: string) => void;
   addImage: (image: string) => void;
   removeImage: (image: string) => void;
 }
@@ -42,6 +45,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     completedDaily: false,
     images: [],
     profilePic: "",
+    currentQuest: "0"
   });
 
   const updateDB = async (uid: string, updatedFields: Partial<UserContextType>) => {
@@ -75,8 +79,11 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         longestStreak: userData?.longestStreak || 0,
         completedDaily: userData?.completedDaily || false,
         images: userData?.images || [],
-        profilePic: userData?.profilePic || ""
+        profilePic: userData?.profilePic || "",
+        currentQuest: userData?.currentQuest || "0"
       }));
+
+       
     } catch (e) {
       console.error("Error initializing user: ", e);
     }
@@ -89,6 +96,16 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }));
     if (uid) {
       updateDB(uid, { userUID: uid });
+    }
+  };
+
+  const setCurrentQuest = (questID: string) => {
+    setUser(prevUser => ({
+      ...prevUser,
+      currentQuest :questID
+    }));
+    if (user.userUID) {
+      updateDB(user.userUID, { currentQuest : questID });
     }
   };
 
@@ -219,7 +236,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setImages,
       setProfilePic,
       addImage,
-      removeImage
+      removeImage,
+      setCurrentQuest
     }}>
       {children}
     </UserContext.Provider>

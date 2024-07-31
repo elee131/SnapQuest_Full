@@ -1,0 +1,294 @@
+[debug] [2024-07-28T23:38:55.998Z] ----------------------------------------------------------------------
+[debug] [2024-07-28T23:38:56.000Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\eojin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-07-28T23:38:56.001Z] CLI Version:   13.14.2
+[debug] [2024-07-28T23:38:56.001Z] Platform:      win32
+[debug] [2024-07-28T23:38:56.001Z] Node Version:  v20.11.1
+[debug] [2024-07-28T23:38:56.001Z] Time:          Sun Jul 28 2024 16:38:56 GMT-0700 (Pacific Daylight Saving Time)
+[debug] [2024-07-28T23:38:56.001Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-28T23:38:56.066Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-28T23:38:56.066Z] > authorizing via signed-in user (elee608f@gmail.com)
+[debug] [2024-07-28T23:38:56.066Z] [iam] checking project snapquest-97a5d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-07-28T23:38:56.069Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions [none]
+[debug] [2024-07-28T23:38:56.069Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:56.069Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-28T23:38:56.241Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions 200
+[debug] [2024-07-28T23:38:56.241Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-28T23:38:56.242Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/snapquest-97a5d/serviceAccounts/snapquest-97a5d@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-07-28T23:38:56.242Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/snapquest-97a5d/serviceAccounts/snapquest-97a5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-07-28T23:38:56.400Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/snapquest-97a5d/serviceAccounts/snapquest-97a5d@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-07-28T23:38:56.401Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/snapquest-97a5d/serviceAccounts/snapquest-97a5d@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'snapquest-97a5d'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-07-28T23:38:56.405Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d [none]
+[debug] [2024-07-28T23:38:56.881Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d 200
+[debug] [2024-07-28T23:38:56.882Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d {"projectId":"snapquest-97a5d","projectNumber":"285044557210","displayName":"SnapQuest","name":"projects/snapquest-97a5d","resources":{"hostingSite":"snapquest-97a5d","realtimeDatabaseInstance":"snapquest-97a5d-default-rtdb"},"state":"ACTIVE","etag":"1_b439c628-15f5-4eab-9f14-b3c02359c65e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-07-28T23:38:56.886Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-28T23:38:56.886Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:56.888Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-28T23:38:56.888Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:56.889Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com [none]
+[debug] [2024-07-28T23:38:56.889Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:56.890Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com [none]
+[debug] [2024-07-28T23:38:56.890Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:57.321Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-28T23:38:57.321Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-07-28T23:38:57.326Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com 200
+[debug] [2024-07-28T23:38:57.326Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com [omitted]
+[warn] !  artifactregistry: missing required API artifactregistry.googleapis.com. Enabling now... 
+[debug] [2024-07-28T23:38:57.327Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com:enable [none]
+[debug] [2024-07-28T23:38:57.327Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com:enable x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:57.347Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-28T23:38:57.347Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-28T23:38:57.355Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com 200
+[debug] [2024-07-28T23:38:57.355Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com [omitted]
+[warn] !  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2024-07-28T23:38:57.355Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com:enable [none]
+[debug] [2024-07-28T23:38:57.356Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com:enable x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:38:57.893Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com:enable 200
+[debug] [2024-07-28T23:38:57.893Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com:enable [omitted]
+[debug] [2024-07-28T23:38:57.929Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com:enable 200
+[debug] [2024-07-28T23:38:57.929Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com:enable [omitted]
+[debug] [2024-07-28T23:39:07.909Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com [none]
+[debug] [2024-07-28T23:39:07.910Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:07.941Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com [none]
+[debug] [2024-07-28T23:39:07.941Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:08.454Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com 200
+[debug] [2024-07-28T23:39:08.454Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-07-28T23:39:08.456Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com 200
+[debug] [2024-07-28T23:39:08.456Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-07-28T23:39:08.457Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d/adminSdkConfig [none]
+[debug] [2024-07-28T23:39:08.600Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d/adminSdkConfig 200
+[debug] [2024-07-28T23:39:08.600Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d/adminSdkConfig {"projectId":"snapquest-97a5d","databaseURL":"https://snapquest-97a5d-default-rtdb.firebaseio.com","storageBucket":"snapquest-97a5d.appspot.com"}
+[debug] [2024-07-28T23:39:08.601Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/snapquest-97a5d/configs [none]
+[debug] [2024-07-28T23:39:08.829Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/snapquest-97a5d/configs 200
+[debug] [2024-07-28T23:39:08.829Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/snapquest-97a5d/configs {}
+[debug] [2024-07-28T23:39:08.833Z] Validating nodejs source
+[debug] [2024-07-28T23:39:09.981Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-07-28T23:39:09.982Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-07-28T23:39:09.983Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-07-28T23:39:09.996Z] Found firebase-functions binary at 'C:\Users\eojin\OneDrive\Desktop\personal projects\SnapQuest_Full\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8837
+
+[debug] [2024-07-28T23:39:10.549Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\eojin\OneDrive\Desktop\personal projects\SnapQuest_Full\functions (60.87 KB) for uploading 
+[debug] [2024-07-28T23:39:15.632Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/snapquest-97a5d/locations/-/functions [none]
+[debug] [2024-07-28T23:39:16.438Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/snapquest-97a5d/locations/-/functions 200
+[debug] [2024-07-28T23:39:16.438Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/snapquest-97a5d/locations/-/functions {}
+[debug] [2024-07-28T23:39:16.447Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-07-28T23:39:17.052Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/-/functions 200
+[debug] [2024-07-28T23:39:17.052Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/-/functions {}
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2024-07-28T23:39:17.058Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com [none]
+[debug] [2024-07-28T23:39:17.058Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:17.060Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com [none]
+[debug] [2024-07-28T23:39:17.060Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:17.063Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/pubsub.googleapis.com [none]
+[debug] [2024-07-28T23:39:17.063Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/pubsub.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:17.065Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/storage.googleapis.com [none]
+[debug] [2024-07-28T23:39:17.065Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/storage.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:17.563Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/storage.googleapis.com 200
+[debug] [2024-07-28T23:39:17.564Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/storage.googleapis.com [omitted]
+[info] +  functions: required API storage.googleapis.com is enabled 
+[debug] [2024-07-28T23:39:17.566Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com 200
+[debug] [2024-07-28T23:39:17.566Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com [omitted]
+[warn] !  functions: missing required API run.googleapis.com. Enabling now... 
+[debug] [2024-07-28T23:39:17.567Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com:enable [none]
+[debug] [2024-07-28T23:39:17.567Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com:enable x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:17.568Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com 200
+[debug] [2024-07-28T23:39:17.568Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com [omitted]
+[warn] !  functions: missing required API eventarc.googleapis.com. Enabling now... 
+[debug] [2024-07-28T23:39:17.568Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com:enable [none]
+[debug] [2024-07-28T23:39:17.568Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com:enable x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:17.569Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/pubsub.googleapis.com 200
+[debug] [2024-07-28T23:39:17.569Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/pubsub.googleapis.com [omitted]
+[info] +  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2024-07-28T23:39:17.972Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com:enable 200
+[debug] [2024-07-28T23:39:17.973Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com:enable [omitted]
+[debug] [2024-07-28T23:39:18.077Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com:enable 200
+[debug] [2024-07-28T23:39:18.078Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com:enable [omitted]
+[debug] [2024-07-28T23:39:27.978Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com [none]
+[debug] [2024-07-28T23:39:27.978Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:28.087Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com [none]
+[debug] [2024-07-28T23:39:28.088Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:28.418Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com 200
+[debug] [2024-07-28T23:39:28.418Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/run.googleapis.com [omitted]
+[info] +  functions: required API run.googleapis.com is enabled 
+[debug] [2024-07-28T23:39:28.520Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com 200
+[debug] [2024-07-28T23:39:28.520Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/snapquest-97a5d/services/eventarc.googleapis.com [omitted]
+[info] +  functions: required API eventarc.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2024-07-28T23:39:28.522Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/285044557210/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2024-07-28T23:39:28.523Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/285044557210/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2024-07-28T23:39:29.134Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/285044557210/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2024-07-28T23:39:29.134Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/285044557210/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-285044557210@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"116025856201604175469"}}
+[debug] [2024-07-28T23:39:29.443Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/285044557210/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2024-07-28T23:39:29.444Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/285044557210/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-285044557210@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"104542171545155376242"}}
+[debug] [2024-07-28T23:39:29.445Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d [none]
+[debug] [2024-07-28T23:39:29.635Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d 200
+[debug] [2024-07-28T23:39:29.635Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/snapquest-97a5d {"projectId":"snapquest-97a5d","projectNumber":"285044557210","displayName":"SnapQuest","name":"projects/snapquest-97a5d","resources":{"hostingSite":"snapquest-97a5d","realtimeDatabaseInstance":"snapquest-97a5d-default-rtdb"},"state":"ACTIVE","etag":"1_b439c628-15f5-4eab-9f14-b3c02359c65e"}
+[debug] [2024-07-28T23:39:29.635Z] [functions] found 1 new HTTP functions, testing setIamPolicy permission...
+[debug] [2024-07-28T23:39:29.635Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions [none]
+[debug] [2024-07-28T23:39:29.636Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions x-goog-quota-user=projects/snapquest-97a5d
+[debug] [2024-07-28T23:39:29.636Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2024-07-28T23:39:29.720Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions 200
+[debug] [2024-07-28T23:39:29.720Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-97a5d:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2024-07-28T23:39:29.720Z] [functions] found setIamPolicy permission, proceeding with deploy
+[debug] [2024-07-28T23:39:29.721Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2024-07-28T23:39:31.157Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2024-07-28T23:39:31.157Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-285044557210-us-central1/5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip?GoogleAccessId=service-285044557210@gcf-admin-robot.iam.gserviceaccount.com&Expires=1722211771&Signature=ie0hRUMw3Ef0yVlRnnKCpb44GYIzJc%2FqBMCirs63372JXCxy%2BbO7eP9Mpnpmvi9fJ%2F6o0FARXCKOQKr3p7yFzx9FJomVgIJrg%2FRsNRrEDT0zxnYbNadihi9ztpYE5dL5SblddT8lyGH48Gx3vs0z%2FrL%2FxJezw1k%2B9riIGlm8qMv0ltxXnLTCXWg4wdAeUDEYRPnRVikW1j5pQpGtIBT%2F0VnddpnAEEcJHO4x%2FLBBIXBw%2BdGrDzw4bbuGSF33obBhWhq%2Btk6ml3hwtFRsyHkmNT8%2F%2Fa077EEYcTdLJwO2MSyO%2Br%2F8iPdjD2GPjfxd9jiKwW%2FJQ8kcame3XHoxS6Ubow%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-285044557210-us-central1","object":"5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip"}}
+[debug] [2024-07-28T23:39:31.158Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-285044557210-us-central1/5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip GoogleAccessId=service-285044557210%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1722211771&Signature=ie0hRUMw3Ef0yVlRnnKCpb44GYIzJc%2FqBMCirs63372JXCxy%2BbO7eP9Mpnpmvi9fJ%2F6o0FARXCKOQKr3p7yFzx9FJomVgIJrg%2FRsNRrEDT0zxnYbNadihi9ztpYE5dL5SblddT8lyGH48Gx3vs0z%2FrL%2FxJezw1k%2B9riIGlm8qMv0ltxXnLTCXWg4wdAeUDEYRPnRVikW1j5pQpGtIBT%2F0VnddpnAEEcJHO4x%2FLBBIXBw%2BdGrDzw4bbuGSF33obBhWhq%2Btk6ml3hwtFRsyHkmNT8%2F%2Fa077EEYcTdLJwO2MSyO%2Br%2F8iPdjD2GPjfxd9jiKwW%2FJQ8kcame3XHoxS6Ubow%3D%3D
+[debug] [2024-07-28T23:39:31.158Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-285044557210-us-central1/5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip [stream]
+[debug] [2024-07-28T23:39:31.469Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-285044557210-us-central1/5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip 200
+[debug] [2024-07-28T23:39:31.469Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-285044557210-us-central1/5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip [omitted]
+[info] +  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 18 (2nd Gen) function helloWorld(us-central1)... 
+[debug] [2024-07-28T23:39:31.477Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions functionId=helloWorld
+[debug] [2024-07-28T23:39:31.477Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions {"name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-uploads-285044557210-us-central1","object":"5f0a7bd4-8ec5-4c46-912d-98dc54b57b67.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld"},"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"}}
+[debug] [2024-07-28T23:39:32.821Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions 200
+[debug] [2024-07-28T23:39:32.821Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/functions {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2"},"done":false}
+[debug] [2024-07-28T23:39:32.822Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:39:32.926Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:39:32.926Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2"},"done":false}
+[debug] [2024-07-28T23:39:33.431Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2024-07-28T23:39:33.431Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:39:33.744Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:39:33.745Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-sources-285044557210-us-central1","object":"helloWorld/function-source.zip","generation":"1722209972489705"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/snapquest-97a5d/serviceAccounts/285044557210-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/snapquest-97a5d/locations/us-central1/services/helloworld","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"285044557210-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"},"environment":"GEN_2"},"stages":[{"name":"BUILD","state":"NOT_STARTED"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION"},"done":false}
+[debug] [2024-07-28T23:39:34.752Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2024-07-28T23:39:34.753Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:39:35.077Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:39:35.077Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-sources-285044557210-us-central1","object":"helloWorld/function-source.zip","generation":"1722209972489705"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/snapquest-97a5d/serviceAccounts/285044557210-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/snapquest-97a5d/locations/us-central1/services/helloworld","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"285044557210-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"},"environment":"GEN_2"},"stages":[{"name":"BUILD","state":"NOT_STARTED"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION"},"done":false}
+[debug] [2024-07-28T23:39:37.085Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2024-07-28T23:39:37.086Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:39:37.192Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:39:37.192Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-sources-285044557210-us-central1","object":"helloWorld/function-source.zip","generation":"1722209972489705"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/snapquest-97a5d/serviceAccounts/285044557210-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/snapquest-97a5d/locations/us-central1/services/helloworld","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"285044557210-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"},"environment":"GEN_2"},"stages":[{"name":"BUILD","state":"NOT_STARTED"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION"},"done":false}
+[debug] [2024-07-28T23:39:41.196Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2024-07-28T23:39:41.196Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:39:41.524Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:39:41.524Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-sources-285044557210-us-central1","object":"helloWorld/function-source.zip","generation":"1722209972489705"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/snapquest-97a5d/serviceAccounts/285044557210-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/snapquest-97a5d/locations/us-central1/services/helloworld","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"285044557210-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"},"environment":"GEN_2"},"stages":[{"name":"BUILD","state":"NOT_STARTED"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION"},"done":false}
+[debug] [2024-07-28T23:39:49.535Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2024-07-28T23:39:49.535Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:39:49.922Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:39:49.922Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-sources-285044557210-us-central1","object":"helloWorld/function-source.zip","generation":"1722209972489705"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/snapquest-97a5d/serviceAccounts/285044557210-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/snapquest-97a5d/locations/us-central1/services/helloworld","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"285044557210-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"},"environment":"GEN_2"},"stages":[{"name":"BUILD","message":"Build in progress","state":"IN_PROGRESS","resource":"projects/285044557210/locations/us-central1/builds/621a8043-7bee-4d5e-9b2f-75906faeb32a","resourceUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION"},"done":false}
+[debug] [2024-07-28T23:39:59.936Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2024-07-28T23:39:59.937Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab [none]
+[debug] [2024-07-28T23:40:00.070Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab 200
+[debug] [2024-07-28T23:40:00.070Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab {"name":"projects/snapquest-97a5d/locations/us-central1/operations/operation-1722209971547-61e5741952c26-5c5c8fcb-f0e2cbab","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2024-07-28T23:39:32.761722273Z","endTime":"2024-07-28T23:39:56.604364110Z","target":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/snapquest-97a5d/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-sources-285044557210-us-central1","object":"helloWorld/function-source.zip","generation":"1722209972489705"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/snapquest-97a5d/serviceAccounts/285044557210-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/snapquest-97a5d/locations/us-central1/services/helloworld","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}","GCLOUD_PROJECT":"snapquest-97a5d","EVENTARC_CLOUD_EVENT_SOURCE":"projects/snapquest-97a5d/locations/us-central1/services/helloWorld","FUNCTION_TARGET":"helloWorld","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"285044557210-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"83eb75e342e851771a7f58a2d2f7dafedb4e60d8"},"environment":"GEN_2"},"stages":[{"name":"ARTIFACT_REGISTRY","message":"Deleting function artifacts in Artifact Registry","state":"COMPLETE"},{"name":"SERVICE","message":"Deleting Cloud Run service","state":"COMPLETE","resource":"projects/snapquest-97a5d/locations/us-central1/services/helloworld"}],"operationType":"CREATE_FUNCTION"},"done":true,"error":{"code":13,"message":"Build failed with status: INTERNAL_ERROR and message: An unexpected error occurred. Refer to build logs: https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210. For more details see the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210."}}
+[debug] [2024-07-28T23:40:00.070Z] Got source token undefined for region us-central1
+[error] Build failed with status: INTERNAL_ERROR and message: An unexpected error occurred. Refer to build logs: https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210. For more details see the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210.
+[debug] [2024-07-28T23:40:00.072Z] Total Function Deployment time: 28597
+[debug] [2024-07-28T23:40:00.072Z] 1 Functions Deployed
+[debug] [2024-07-28T23:40:00.072Z] 1 Functions Errored
+[debug] [2024-07-28T23:40:00.072Z] 0 Function Deployments Aborted
+[debug] [2024-07-28T23:40:00.072Z] Average Function Deployment time: 28596
+[info] 
+[info] Functions deploy had errors with the following functions:
+	helloWorld(us-central1)
+[debug] [2024-07-28T23:40:00.074Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[info] i  functions: cleaning up build files... 
+[debug] [2024-07-28T23:40:00.075Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/snapquest-97a5d/locations/us-central1/repositories/gcf-artifacts/packages/hello_world [none]
+[debug] [2024-07-28T23:40:00.076Z] >>> [apiv2][query] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list [none]
+[debug] [2024-07-28T23:40:00.467Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/snapquest-97a5d/locations/us-central1/repositories/gcf-artifacts/packages/hello_world 404
+[debug] [2024-07-28T23:40:00.467Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/snapquest-97a5d/locations/us-central1/repositories/gcf-artifacts/packages/hello_world {"error":{"code":404,"message":"Package \"projects/snapquest-97a5d/locations/us-central1/repositories/gcf-artifacts/packages/hello_world\" was not found.","status":"NOT_FOUND"}}
+[debug] [2024-07-28T23:40:00.779Z] <<< [apiv2][status] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list 404
+[debug] [2024-07-28T23:40:00.779Z] <<< [apiv2][body] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-07-28T23:40:00.780Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[debug] [2024-07-28T23:40:00.789Z] >>> [apiv2][query] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list [none]
+[debug] [2024-07-28T23:40:00.981Z] <<< [apiv2][status] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list 404
+[debug] [2024-07-28T23:40:00.981Z] <<< [apiv2][body] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-07-28T23:40:00.982Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[debug] [2024-07-28T23:40:01.083Z] >>> [apiv2][query] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list [none]
+[debug] [2024-07-28T23:40:01.286Z] <<< [apiv2][status] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list 404
+[debug] [2024-07-28T23:40:01.286Z] <<< [apiv2][body] GET https://us.gcr.io/v2/snapquest-97a5d/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-07-28T23:40:01.286Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[warn] !  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/gcr/images/snapquest-97a5d/us/gcf 
+[debug] [2024-07-28T23:40:01.287Z] Functions deploy failed.
+[debug] [2024-07-28T23:40:01.287Z] {
+  "endpoint": {
+    "id": "helloWorld",
+    "project": "snapquest-97a5d",
+    "region": "us-central1",
+    "entryPoint": "helloWorld",
+    "platform": "gcfv2",
+    "runtime": "nodejs18",
+    "httpsTrigger": {},
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "serviceAccount": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"snapquest-97a5d\",\"databaseURL\":\"https://snapquest-97a5d-default-rtdb.firebaseio.com\",\"storageBucket\":\"snapquest-97a5d.appspot.com\"}",
+      "GCLOUD_PROJECT": "snapquest-97a5d",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/snapquest-97a5d/locations/us-central1/services/helloWorld"
+    },
+    "codebase": "default",
+    "cpu": 1,
+    "targetedByOnly": false,
+    "hash": "83eb75e342e851771a7f58a2d2f7dafedb4e60d8"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "exit": 1,
+    "message": "Build failed with status: INTERNAL_ERROR and message: An unexpected error occurred. Refer to build logs: https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210. For more details see the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210.",
+    "original": {
+      "code": 13,
+      "message": "Build failed with status: INTERNAL_ERROR and message: An unexpected error occurred. Refer to build logs: https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210. For more details see the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/621a8043-7bee-4d5e-9b2f-75906faeb32a?project=285044557210."
+    },
+    "status": 13,
+    "code": 13
+  }
+}
+[debug] [2024-07-28T23:40:01.288Z] Error: Failed to create function helloWorld in region us-central1
+    at C:\Users\eojin\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:294:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV2Function (C:\Users\eojin\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:278:30)
+    at async Fabricator.createEndpoint (C:\Users\eojin\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:137:13)
+    at async handle (C:\Users\eojin\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:89:17)
+[error] 
+[error] Error: There was an error deploying functions

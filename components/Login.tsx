@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged , User } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import { useUser } from "../context/UserContext";
 import { useFocusEffect } from "@react-navigation/native";
@@ -17,13 +17,32 @@ import LottieView from "lottie-react-native";
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState<User | null>(null); // Set the type to User | null
   const { initUser } = useUser();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(currentUser => {
+      if (currentUser) {
+        setUser(currentUser);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      initUser(user.uid); // Ensure initUser is defined and imported
+      navigation.navigate('Main');
+    }
+  }, [user, navigation]);
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         initUser(user.uid);
+
         navigation.navigate("Main");
       })
       .catch((error) => {

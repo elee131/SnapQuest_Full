@@ -4,6 +4,8 @@ import themeContext from '@/assets/theme/themeContext';
 import { useUser } from "../../context/UserContext";
 import LottieView from "lottie-react-native";
 // import { MaterialIcons } from '@expo/vector-icons';
+import {useQuest} from 'context/questContext';
+
 
 
 
@@ -15,6 +17,14 @@ const Homescreen = () => {
     longestStreak,
     completedDaily,
   } = useUser();
+
+  const {
+    prompt, // the prompt (ex. "cherry blossom")
+    loading, // loading while fetching new quest
+    // questImage, -- cover img of the quest
+    fetchRandomQuest // randomizes the quest
+  } = useQuest();
+
 
   const questImage = require('../../assets/cherryblossom.png');
 
@@ -44,7 +54,7 @@ const theme = useContext(themeContext)
       <View style={[styles.questCard, {backgroundColor: theme.content}]}>
         <Image source={questImage} style={styles.questImage}/>
         <Text style={[styles.questTitle , {color: theme.color}]}>TODAY'S QUEST:</Text>
-        <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of the stunning cherry blossoms in bloom!"</Text>
+        <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of {prompt}!!"</Text>
 
         <TouchableOpacity style={[styles.button, {backgroundColor: theme.dark }]}>
           <Text style = {[styles.buttonText, {color: theme.color}]}>Change Quest
