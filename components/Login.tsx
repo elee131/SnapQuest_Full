@@ -12,18 +12,21 @@ import { auth } from "firebaseConfig";
 import { useUser } from "../context/UserContext";
 import { useFocusEffect } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
+import { useQuest } from "@/context/questContext";
 
 
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { initUser } = useUser();
+  const {initQuest} = useQuest();
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         initUser(user.uid);
+
         navigation.navigate("Main");
       })
       .catch((error) => {

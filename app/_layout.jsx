@@ -3,8 +3,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
 import { UserProvider } from 'context/UserContext'; 
-
-
+import { QuestProvider } from 'context/questContext'; // Import QuestProvider
 
 export {
   ErrorBoundary,
@@ -27,10 +26,6 @@ export default function RootLayout() {
     'inter-thin': require('../assets/fonts/Inter-Thin.ttf'),
     'inter-medium': require('../assets/fonts/Inter-Medium.ttf'),
     'inter': require('../assets/fonts/Inter-Regular.ttf'),
-    
-
-
-
   });
 
   useEffect(() => {
@@ -48,8 +43,10 @@ export default function RootLayout() {
   }
 
   return (
-    <UserProvider> 
-      <RootLayoutNav />
+    <UserProvider>
+      <QuestProvider>
+        <RootLayoutNav />
+      </QuestProvider>
     </UserProvider>
   );
 }

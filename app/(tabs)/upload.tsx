@@ -5,15 +5,18 @@ import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useUser } from 'context/UserContext';
+import { useQuest } from '@/context/questContext';
 import FallingLeavesBackground from '../../components/FallingLeavesBackground';
 import themeContext from '@/assets/theme/themeContext';
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
   const [labels, setLabels] = useState([]);
-  const {  addImage, setCurrStreak, currStreak, longestStreak, setLongestStreak, completedDaily, setCompletedDaily, setPoint , point} = useUser();
+  const {  addImage, setCurrStreak, 
+    currStreak, longestStreak, setLongestStreak, 
+    completedDaily, setCompletedDaily, setPoint , point} = useUser();
   const theme = useContext(themeContext);
-
+  const {matchString} = useQuest();
 
 
   const pickImage = async () => {
