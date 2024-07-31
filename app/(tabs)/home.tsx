@@ -54,7 +54,7 @@ const theme = useContext(themeContext)
       <View style={[styles.questCard, {backgroundColor: theme.content}]}>
         <Image source={questImage} style={styles.questImage}/>
         <Text style={[styles.questTitle , {color: theme.color}]}>TODAY'S QUEST:</Text>
-        <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of {prompt}"</Text>
+        <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of {prompt}!!"</Text>
 
         <TouchableOpacity style={[styles.button, {backgroundColor: theme.dark }]}>
           <Text style = {[styles.buttonText, {color: theme.color}]}>Change Quest

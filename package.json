@@ -16,6 +16,7 @@
     "@dotlottie/react-player": "^1.6.19",
     "@expo/vector-icons": "^14.0.0",
     "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/progress-bar-android": "^1.0.5",
     "@react-navigation/bottom-tabs": "^6.5.20",

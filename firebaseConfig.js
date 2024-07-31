@@ -1,11 +1,8 @@
-// Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeAuth,getAuth, getReactNativePersistence } from "firebase/auth";
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: process.env.EXPO_PUBLIC_FB_API_KEY,
     authDomain: process.env.EXPO_PUBLIC_FB_AUTH_DOMAIN,
@@ -16,10 +13,12 @@ const firebaseConfig = {
     appId: process.env.EXPO_PUBLIC_FB_APP_ID
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
 
+// Initialize Auth with custom persistence settings
+const auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
 
-export { app, db, auth};
+export { app, db, auth };
