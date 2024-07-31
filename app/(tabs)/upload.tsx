@@ -28,6 +28,7 @@ const UploadScreen = () => {
     });
 
     if (!result.canceled) {
+      console.log(matchString);
       analyzeImage(result.assets[0].uri);      
     }
   };
@@ -115,8 +116,7 @@ const UploadScreen = () => {
       const apiResponse = await axios.post(apiUrl, requestData);
 
       setLabels(apiResponse.data.responses[0].labelAnnotations);
-      const variableString = ['desk', 'brown', 'beige', 'bottle', 'drink', 'cup', 'Plastic bottle', 'glass', 'circle', 'liquid', 'drinkware']; 
-      const hasMatch = parseResponse(apiResponse.data.responses[0], variableString);
+      const hasMatch = parseResponse(apiResponse.data.responses[0], matchString);
       if (hasMatch) {
         showAlert("Success!");
         handleUpload(uri)
@@ -129,10 +129,10 @@ const UploadScreen = () => {
     }
   };
 
-  const parseResponse = (response: any, variableString: string[]) => {
+  const parseResponse = (response: any, matchString: string[]) => {
     const matchedDescriptions: string[] = [];
   
-    if (!response || !response.labelAnnotations || !variableString) {
+    if (!response || !response.labelAnnotations || !matchString) {
       return false;
     }
   
@@ -142,7 +142,7 @@ const UploadScreen = () => {
       console.log(annotation.description); 
 
       matchedDescriptions.push(annotation.description);
-      if (variableString.includes(annotation.description.toLowerCase())) {
+      if (matchString.includes(annotation.description.toLowerCase())) {
         foundMatch = true;
         break
       }
