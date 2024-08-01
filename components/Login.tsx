@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
-import { signInWithEmailAndPassword, onAuthStateChanged , User } from "firebase/auth";
+import { signInWithEmailAndPassword , User } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import { useUser } from "../context/UserContext";
 import { useFocusEffect } from "@react-navigation/native";
