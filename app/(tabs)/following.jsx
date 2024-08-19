@@ -93,7 +93,7 @@ const Following = () => {
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+      {/* <ScrollView contentContainerStyle={styles.scrollViewContent}> */}
 
 
         <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
@@ -125,7 +125,7 @@ const Following = () => {
           contentContainerStyle={[styles.postsContainer, { backgroundColor: theme.background }]}
         />
 
-      </ScrollView>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

@@ -173,9 +173,9 @@ const UploadScreen = () => {
 
   if (isLoading) {
     return (
-      <SafeAreaView style ={styles.loadingContainer}>
+      <SafeAreaView style ={[styles.loadingContainer, {backgroundColor: theme.content}]}>
         <ActivityIndicator size ="large" color="0000ff"/>
-        <Text>Loading...</Text>
+        <Text style={[{color: theme.color}]}>Loading...</Text>
       </SafeAreaView>
     )
   }
