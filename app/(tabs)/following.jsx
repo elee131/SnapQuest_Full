@@ -9,14 +9,6 @@ import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 
 
 
-// Mock user posts data
-// const mockUserPosts = [
-//   { id: 1, username: 'Jane', postImage: require('@/assets/images/post1.jpg') },
-//   { id: 2, username: 'Richard', postImage: require('@/assets/images/post2.jpg') },
-//   { id: 3, username: 'Martha', postImage: require('@/assets/images/post3.jpg') },
-//   // Add more mock data as needed
-// ];
-
 
 
 const SearchBar = ({ onSearch }) => {
@@ -52,7 +44,8 @@ const UserPost = ({ post }) => {
   const theme = useContext(themeContext);
   return (
     <View style={[styles.postContainer, { backgroundColor: theme.content }]}>
-      <Image source={post.postImage} style={styles.postImage} />
+      {/* <Image source={post.postImage} style={styles.postImage} /> */}
+      <Image source={{ uri: post.url }} style={styles.postImage} />
       <Text style={[styles.username, { color: theme.color }]}>Picture by {post.user}</Text>
     </View>
   );
@@ -64,35 +57,32 @@ const Following = () => {
   const [posts, setPosts] = useState([]);
   
 
-
   useEffect(() => {
     const fetchPics = async () => {
       const collectionref = collection(db, 'todays_pictures');
       
       const snapshot = await getDocs(collectionref); 
       let imgUserPair = [];
-      snapshot.forEach((doc) => { // Corrected from foreach to forEach
+      snapshot.forEach((doc) => { 
         const data = doc.data();
         const imgUser = {
           user: data.user,
           url: data.image
         };
         imgUserPair.push(imgUser);
-        
       });
-      
-      console.log(snapshot);
-      console.log(imgUserPair);
       setPosts(imgUserPair);
     }; 
   
-    // Call the function
     fetchPics()
       .then(() => console.log("Success!"))
-      .catch(console.error); // Catch any errors
+      .catch(console.error); 
   }, []);
   
  
+  useEffect(() => {
+    setFilteredPosts(posts);
+  }, [posts]);
   
 
 
@@ -104,6 +94,8 @@ const Following = () => {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
+
+
         <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
           <TouchableOpacity>
             <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
@@ -115,17 +107,24 @@ const Following = () => {
               <Ionicons name='chevron-down' size={20} color={Colors.primary} />
             </View>
           </View>
+
+
           <TouchableOpacity style={[styles.profileButton, { backgroundColor: theme.background }]}>
             <Ionicons name="person-outline" size={20} color={theme.dark} />
           </TouchableOpacity>
         </View>
+
         <SearchBar onSearch={handleSearch} />
+
+        <Text style={[styles.header, { color: theme.color }]}>Today's Photos by Other Users</Text>
+
         <FlatList
           data={filteredPosts}
           renderItem={({ item }) => <UserPost post={item} />}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.user.toString()}
           contentContainerStyle={[styles.postsContainer, { backgroundColor: theme.background }]}
         />
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -139,6 +138,13 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
   },
+  header: {
+    fontSize: 18, 
+    fontFamily: "inter-bold", 
+    alignItems: "center", 
+    textAlign: "center", 
+    marginBottom: 20, 
+  }, 
   headerContainer: {
     height: 60,
     flexDirection: 'row',
