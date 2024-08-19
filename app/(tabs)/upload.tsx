@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ImageBackground, ActivityIndicator, StatusBar } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
@@ -8,6 +8,7 @@ import { useUser } from 'context/UserContext';
 import { useQuest } from '@/context/questContext';
 import FallingLeavesBackground from '../../components/FallingLeavesBackground';
 import themeContext from '@/assets/theme/themeContext';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const UploadScreen = () => {
   const [image, setImage] = useState("");
@@ -17,6 +18,7 @@ const UploadScreen = () => {
     completedDaily, setCompletedDaily, setPoint , point} = useUser();
   const theme = useContext(themeContext);
   const {matchString} = useQuest();
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const pickImage = async () => {
@@ -29,7 +31,8 @@ const UploadScreen = () => {
 
     if (!result.canceled) {
       console.log(matchString);
-      analyzeImage(result.assets[0].uri);      
+      analyzeImage(result.assets[0].uri); 
+      setIsLoading(true);     
     }
   };
 
@@ -63,10 +66,11 @@ const UploadScreen = () => {
       );
       const imgData = await response.json();
       imageURL = imgData.secure_url.toString();      
-      console.log(imageURL)
-      addImage(imageURL)
-      updateUserData()
-
+      console.log(imageURL);
+      addImage(imageURL);
+      updateUserData();
+      showAlert("Sucessfully Completed Quest!");
+      setIsLoading(false);
 
     } catch (error) {
       console.log("caught error:", error);
@@ -118,10 +122,11 @@ const UploadScreen = () => {
       setLabels(apiResponse.data.responses[0].labelAnnotations);
       const hasMatch = parseResponse(apiResponse.data.responses[0], matchString);
       if (hasMatch) {
-        showAlert("Success!");
-        handleUpload(uri)
+        
+        handleUpload(uri);
       } else {
         showAlert("Hmm, that doesnt seem correct. Try again");
+        setIsLoading(false);
       }
     } catch (error) {
       console.error('Error analyzing image:', error);
@@ -165,6 +170,15 @@ const UploadScreen = () => {
       { cancelable: false }
     );
   };
+
+  if (isLoading) {
+    return (
+      <SafeAreaView style ={styles.loadingContainer}>
+        <ActivityIndicator size ="large" color="0000ff"/>
+        <Text>Loading...</Text>
+      </SafeAreaView>
+    )
+  }
 
   return (
       <View style={[styles.container, {backgroundColor: theme.background}]}>
@@ -219,6 +233,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10, 
   },  
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+    paddingTop:StatusBar.currentHeight,
+    justifyContent:"center",
+    alignItems:"center"
+  },
 });
 
 export default UploadScreen;

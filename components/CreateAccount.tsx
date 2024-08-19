@@ -38,7 +38,7 @@ const CreateAccountScreen = ({navigation}: any) => {
   };
 
 
-  // const navigation = useNavigation();
+
   const handleCreateAccount = async() => {
     console.log("in handleCreate");
     try {
@@ -51,7 +51,7 @@ const CreateAccountScreen = ({navigation}: any) => {
     }
   };
 
-  // navigation to login page 
+
   const handleLoginScreen = () => {
     navigation.navigate('Login')
   }
