@@ -1,21 +1,46 @@
-import React, { useContext } from "react";
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from 'react-native';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { doc, getDocs, collection, getDoc } from 'firebase/firestore';
+import { db } from 'firebaseConfig';
 import { FontAwesome5 } from '@expo/vector-icons';
 import themeContext from '@/assets/theme/themeContext';
 import { useUser } from "../../context/UserContext";
 import { profile } from "@/assets/data/images";
 
+interface UserData {
+  userUID: string;
+  name: string;
+  profilePic: string;
+  currStreak: number;
+  point: number;
+}
+
 const RewardScreen = () => {
   const theme = useContext(themeContext);
+  const {
+    username,
+    currStreak,
+    longestStreak,
+    profilePic,
+    point,
+    setProfilePic,
+    setUserUID,
+  } = useUser();
+  const [users, setUsers] = useState<UserData[]>([]);
+  const [pointRanking, setPointRanking] = useState<UserData[]>([]);
+  const [streakRanking, setStreakRanking] = useState<UserData[]>([]);
+  const [pointRank, setPointRank] = useState(-1);
+  const [streakRank, setStreakRank] =useState(-1);
 
-  const getBorderColor = (rank: number) => {
-    switch (rank) {
-      case 1: return 'gold';    
-      case 2: return 'silver';  
-      case 3: return '#CD7F32'; 
-      default: return '#ccc';   
-    }
-  };
+  useEffect(() => {
+    console.log("in useeffect")
+    fetchUserData().then(() => {
+      sortByPoints();
+      sortByStreak();
+      findUserRanking();
+    });
+  }, []);
+
 
   // Fake user data without ranking
   const fakeUserData = [
@@ -38,14 +63,71 @@ const RewardScreen = () => {
       points: 1500,
     },
   ];
-
-
+  
   const sortedByStreak = [...fakeUserData].sort((a, b) => b.currStreak - a.currStreak);
-
-
   const sortedByPoints = [...fakeUserData].sort((a, b) => b.points - a.points);
 
-  const { username, currStreak, profilePic, point } = useUser();
+  const { userUID } = useUser();
+
+
+  const getBorderColor = (rank: number) => {
+    switch (rank) {
+      case 1: return 'gold';    
+      case 2: return 'silver';  
+      case 3: return '#CD7F32'; 
+      default: return '#ccc';   
+    }
+  };
+
+  const fetchUserData = async () => {
+    const data = await getDocs(collection(db, "users"));
+    const userData: UserData[] = [];
+
+    data.forEach((doc) => {
+      const currData = doc.data();
+      const currUser = {
+        userUID: currData.userUID as string,
+        name: currData.name as string,
+        profilePic: currData.profiePic as string,
+        currStreak: currData.currStreak as number,
+        point: currData.point as number,
+      };
+
+      userData.push(currUser);
+    });
+
+    setUsers(userData);
+    console.log("Fetched user data: ", userData); // Log user data after fetching
+
+  }
+
+
+  const sortByPoints = () => {
+    const sortedByPoints = users.sort((a, b) => b.point - a.point);
+    setPointRanking(sortedByPoints);
+    console.log("Sorted by points: ", sortedByPoints); // Log sorted users by points
+
+  }
+
+  const sortByStreak = () => {
+    const sortedByStreaks = users.sort((a, b) => b.currStreak - a.currStreak);
+    setStreakRanking(sortedByStreaks);
+    console.log("Sorted by streak: ", sortedByStreak); // Log sorted users by streak
+
+  }
+
+  const findUserRanking= () => {
+    const pointRank = pointRanking.findIndex(user => user.userUID === userUID);
+    const streakRank = streakRanking.findIndex(user => user.userUID === userUID);
+
+    setPointRank(pointRank + 1);
+    setStreakRank(streakRank + 1);
+
+    console.log("User point rank: ", pointRank + 1); // Log point rank
+    console.log("User streak rank: ", streakRank + 1); // Log streak rank
+
+  }
+
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
