@@ -43,29 +43,29 @@ const RewardScreen = () => {
 
 
   // Fake user data without ranking
-  const fakeUserData = [
-    {
-      username: 'Anica',
-      profilePic: 'https://media.istockphoto.com/id/1443562748/photo/cute-ginger-cat.jpg?s=1024x1024&w=is&k=20&c=QaEkKC7lFEBrzzPftMRBVuOZq4FNOnUjOV1VqTmpMfY=',
-      currStreak: 20,
-      points: 1305,
-    },
-    {
-      username: 'Jenny',
-      profilePic: 'https://media.istockphoto.com/id/1201112520/photo/planting-tree-in-garden-concept-save-world-green-earth.jpg?s=1024x1024&w=is&k=20&c=ATz1X5frL8nlset8lIt_xq9R0aYaKdQ_OjrBagIhdMw=',
-      currStreak: 18,
-      points: 1703,
-    },
-    {
-      username: 'Seva',
-      profilePic: 'https://media.istockphoto.com/id/1257951336/photo/transparent-umbrella-under-rain-against-water-drops-splash-background-rainy-weather-concept.jpg?s=1024x1024&w=is&k=20&c=U6uwI27fEfgEAl9j_Hz848FgLRidd9Ww0kPCkc0FZB8=',
-      currStreak: 15,
-      points: 1500,
-    },
-  ];
+  // const fakeUserData = [
+  //   {
+  //     username: 'Anica',
+  //     profilePic: 'https://media.istockphoto.com/id/1443562748/photo/cute-ginger-cat.jpg?s=1024x1024&w=is&k=20&c=QaEkKC7lFEBrzzPftMRBVuOZq4FNOnUjOV1VqTmpMfY=',
+  //     currStreak: 20,
+  //     points: 1305,
+  //   },
+  //   {
+  //     username: 'Jenny',
+  //     profilePic: 'https://media.istockphoto.com/id/1201112520/photo/planting-tree-in-garden-concept-save-world-green-earth.jpg?s=1024x1024&w=is&k=20&c=ATz1X5frL8nlset8lIt_xq9R0aYaKdQ_OjrBagIhdMw=',
+  //     currStreak: 18,
+  //     points: 1703,
+  //   },
+  //   {
+  //     username: 'Seva',
+  //     profilePic: 'https://media.istockphoto.com/id/1257951336/photo/transparent-umbrella-under-rain-against-water-drops-splash-background-rainy-weather-concept.jpg?s=1024x1024&w=is&k=20&c=U6uwI27fEfgEAl9j_Hz848FgLRidd9Ww0kPCkc0FZB8=',
+  //     currStreak: 15,
+  //     points: 1500,
+  //   },
+  // ];
   
-  const sortedByStreak = [...fakeUserData].sort((a, b) => b.currStreak - a.currStreak);
-  const sortedByPoints = [...fakeUserData].sort((a, b) => b.points - a.points);
+  // const sortedByStreak = [...fakeUserData].sort((a, b) => b.currStreak - a.currStreak);
+  // const sortedByPoints = [...fakeUserData].sort((a, b) => b.points - a.points);
 
   const { userUID } = useUser();
 
@@ -112,7 +112,7 @@ const RewardScreen = () => {
   const sortByStreak = () => {
     const sortedByStreaks = users.sort((a, b) => b.currStreak - a.currStreak);
     setStreakRanking(sortedByStreaks);
-    console.log("Sorted by streak: ", sortedByStreak); // Log sorted users by streak
+    console.log("Sorted by streak: ", sortedByStreaks); // Log sorted users by streak
 
   }
 
