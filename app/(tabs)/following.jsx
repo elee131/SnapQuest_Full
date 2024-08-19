@@ -19,6 +19,10 @@ import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 
 
 
+
+
+
+//
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
   const theme = useContext(themeContext);
@@ -52,7 +56,8 @@ const UserPost = ({ post }) => {
   const theme = useContext(themeContext);
   return (
     <View style={[styles.postContainer, { backgroundColor: theme.content }]}>
-      <Image source={post.postImage} style={styles.postImage} />
+      {/* <Image source={post.postImage} style={styles.postImage} /> */}
+      <Image source={{ uri: post.url }} style={styles.postImage} />
       <Text style={[styles.username, { color: theme.color }]}>Picture by {post.user}</Text>
     </View>
   );
@@ -63,7 +68,6 @@ const Following = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [posts, setPosts] = useState([]);
   
-
 
   useEffect(() => {
     const fetchPics = async () => {
@@ -146,13 +150,18 @@ const Following = () => {
             <Ionicons name="person-outline" size={20} color={theme.dark} />
           </TouchableOpacity>
         </View>
+
         <SearchBar onSearch={handleSearch} />
+
+        <Text style={[styles.header, { color: theme.color }]}>Today's Photos by Other Users</Text>
+
         <FlatList
           data={filteredPosts}
           renderItem={({ item }) => <UserPost post={item} />}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.user.toString()}
           contentContainerStyle={[styles.postsContainer, { backgroundColor: theme.background }]}
         />
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -166,6 +175,13 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
   },
+  header: {
+    fontSize: 18, 
+    fontFamily: "inter-bold", 
+    alignItems: "center", 
+    textAlign: "center", 
+    marginBottom: 20, 
+  }, 
   headerContainer: {
     height: 60,
     flexDirection: 'row',
