@@ -50,6 +50,7 @@ const UserPost = ({ post }) => {
     </View>
   );
 };
+//
 
 const Following = () => {
   const theme = useContext(themeContext);
