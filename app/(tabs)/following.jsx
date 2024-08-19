@@ -10,7 +10,7 @@ import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 
 
 
-
+//
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
   const theme = useContext(themeContext);
@@ -50,7 +50,6 @@ const UserPost = ({ post }) => {
     </View>
   );
 };
-//
 
 const Following = () => {
   const theme = useContext(themeContext);
