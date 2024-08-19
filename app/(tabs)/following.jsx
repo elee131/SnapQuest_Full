@@ -9,20 +9,8 @@ import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 
 
 
-// Mock user posts data
-// const mockUserPosts = [
-//   { id: 1, username: 'Jane', postImage: require('@/assets/images/post1.jpg') },
-//   { id: 2, username: 'Richard', postImage: require('@/assets/images/post2.jpg') },
-//   { id: 3, username: 'Martha', postImage: require('@/assets/images/post3.jpg') },
-//   // Add more mock data as needed
-// ];
 
 
-
-
-
-
-//
 const SearchBar = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
   const theme = useContext(themeContext);
@@ -75,56 +63,27 @@ const Following = () => {
       
       const snapshot = await getDocs(collectionref); 
       let imgUserPair = [];
-      snapshot.forEach((doc) => { // Corrected from foreach to forEach
+      snapshot.forEach((doc) => { 
         const data = doc.data();
         const imgUser = {
           user: data.user,
           url: data.image
         };
         imgUserPair.push(imgUser);
-        
       });
-      
-      console.log(snapshot);
-      console.log(imgUserPair);
       setPosts(imgUserPair);
     }; 
   
-    // Call the function
     fetchPics()
       .then(() => console.log("Success!"))
-      .catch(console.error); // Catch any errors
+      .catch(console.error); 
   }, []);
   
  
-  // useEffect(() => {
-  //   const fetchPics= async()  => {
-  //     const collectionref = collection(db, 'todays_pictures');
-
-
-
-    //   const snapshot = await collectionref.get(); 
-    //   let imgUserPair = [];
-    //   snapshot.foreach((doc) => {
-    //     const data = doc.data()
-    //     const imgUser = {
-    //       user: data.user,
-    //       url: data.image
-    //     }
-    //      imgUserPair.push(imgUser);
-    //   })
-    //   console.log(snapshot);
-    
-    //  setPosts(imgUserPair)
-    // }; 
-    
+  useEffect(() => {
+    setFilteredPosts(posts);
+  }, [posts]);
   
-  //   // call the function
-  //   fetchPics().then(()=> console.log("Success!"))
-  //     // make sure to catch any error
-  //     .catch(console.error);
-  // }, [])
-
 
 
   const handleSearch = (searchText) => {
@@ -135,6 +94,8 @@ const Following = () => {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
+
+
         <View style={[styles.headerContainer, { backgroundColor: theme.background }]}>
           <TouchableOpacity>
             <Image source={require("@/assets/images/searchIcon.jpg")} style={styles.iconStyle} />
@@ -146,6 +107,8 @@ const Following = () => {
               <Ionicons name='chevron-down' size={20} color={Colors.primary} />
             </View>
           </View>
+
+
           <TouchableOpacity style={[styles.profileButton, { backgroundColor: theme.background }]}>
             <Ionicons name="person-outline" size={20} color={theme.dark} />
           </TouchableOpacity>
