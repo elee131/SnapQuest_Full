@@ -25,6 +25,7 @@ const RewardScreen = () => {
     point,
     setProfilePic,
     setUserUID,
+    userUID
   } = useUser();
   const [users, setUsers] = useState<UserData[]>([]);
   const [pointRanking, setPointRanking] = useState<UserData[]>([]);
@@ -33,42 +34,62 @@ const RewardScreen = () => {
   const [streakRank, setStreakRank] =useState(-1);
 
   useEffect(() => {
-    console.log("in useeffect")
-      fetchUserData().then(() => {
-      sortByPoints();
-      sortByStreak();
-      findUserRanking();
-    });
+    fetchUserData();
   }, []);
-
-
-  // Fake user data without ranking
-  // const fakeUserData = [
-  //   {
-  //     username: 'Anica',
-  //     profilePic: 'https://media.istockphoto.com/id/1443562748/photo/cute-ginger-cat.jpg?s=1024x1024&w=is&k=20&c=QaEkKC7lFEBrzzPftMRBVuOZq4FNOnUjOV1VqTmpMfY=',
-  //     currStreak: 20,
-  //     points: 1305,
-  //   },
-  //   {
-  //     username: 'Jenny',
-  //     profilePic: 'https://media.istockphoto.com/id/1201112520/photo/planting-tree-in-garden-concept-save-world-green-earth.jpg?s=1024x1024&w=is&k=20&c=ATz1X5frL8nlset8lIt_xq9R0aYaKdQ_OjrBagIhdMw=',
-  //     currStreak: 18,
-  //     points: 1703,
-  //   },
-  //   {
-  //     username: 'Seva',
-  //     profilePic: 'https://media.istockphoto.com/id/1257951336/photo/transparent-umbrella-under-rain-against-water-drops-splash-background-rainy-weather-concept.jpg?s=1024x1024&w=is&k=20&c=U6uwI27fEfgEAl9j_Hz848FgLRidd9Ww0kPCkc0FZB8=',
-  //     currStreak: 15,
-  //     points: 1500,
-  //   },
-  // ];
   
-  // const sortedByStreak = [...fakeUserData].sort((a, b) => b.currStreak - a.currStreak);
-  // const sortedByPoints = [...fakeUserData].sort((a, b) => b.points - a.points);
-
-  const { userUID } = useUser();
-
+  const fetchUserData = async () => {
+    try {
+      const data = await getDocs(collection(db, "users"));
+      const userData: UserData[] = [];
+  
+      data.forEach((doc) => {
+        const currData = doc.data();
+        const currUser = {
+          userUID: currData.userUID as string,
+          name: currData.name as string,
+          profilePic: currData.profilePic as string, 
+          currStreak: currData.currStreak as number,
+          point: currData.point as number,
+        };
+        userData.push(currUser);
+      });
+  
+      setUsers(userData);
+      console.log("Fetched user data: ", userData);
+  
+      // Sort by points and streak after fetching user data
+      sortAndRankUsers(userData);
+  
+    } catch (error) {
+      console.error("Error fetching user data: ", error);
+    }
+  };
+  
+  const sortAndRankUsers = (userData: UserData[]) => {
+    // Sort by points
+    const sortedByPoints = [...userData].sort((a, b) => b.point - a.point);
+    setPointRanking(sortedByPoints);
+    console.log("Sorted by points: ", sortedByPoints);
+  
+    // Sort by streak
+    const sortedByStreaks = [...userData].sort((a, b) => b.currStreak - a.currStreak);
+    setStreakRanking(sortedByStreaks);
+    console.log("Sorted by streak: ", sortedByStreaks);
+  
+    // Find user ranking
+    findUserRanking(sortedByPoints, sortedByStreaks);
+  };
+  
+  const findUserRanking = (sortedByPoints: UserData[], sortedByStreaks: UserData[]) => {
+    const pointRank = sortedByPoints.findIndex(user => user.userUID === userUID);
+    const streakRank = sortedByStreaks.findIndex(user => user.userUID === userUID);
+  
+    setPointRank(pointRank + 1);
+    setStreakRank(streakRank + 1);
+  
+    console.log("User point rank: ", pointRank + 1); // Log point rank
+    console.log("User streak rank: ", streakRank + 1); // Log streak rank
+  };
 
   const getBorderColor = (rank: number) => {
     switch (rank) {
@@ -78,55 +99,7 @@ const RewardScreen = () => {
       default: return '#ccc';   
     }
   };
-
-  const fetchUserData = async () => {
-    const data = await getDocs(collection(db, "users"));
-    const userData: UserData[] = [];
-
-    data.forEach((doc) => {
-      const currData = doc.data();
-      const currUser = {
-        userUID: currData.userUID as string,
-        name: currData.name as string,
-        profilePic: currData.profiePic as string,
-        currStreak: currData.currStreak as number,
-        point: currData.point as number,
-      };
-
-      userData.push(currUser);
-    });
-
-    setUsers(userData);
-    console.log("Fetched user data: ", userData); // Log user data after fetching
-
-  }
-
-
-  const sortByPoints = () => {
-    const sortedByPoints = users.sort((a, b) => b.point - a.point);
-    setPointRanking(sortedByPoints);
-    console.log("Sorted by points: ", sortedByPoints); // Log sorted users by points
-
-  }
-
-  const sortByStreak = () => {
-    const sortedByStreaks = users.sort((a, b) => b.currStreak - a.currStreak);
-    setStreakRanking(sortedByStreaks);
-    console.log("Sorted by streak: ", sortedByStreaks); // Log sorted users by streak
- 
-  }
-
-  const findUserRanking= () => {
-    const pointRank = pointRanking.findIndex(user => user.userUID === userUID);
-    const streakRank = streakRanking.findIndex(user => user.userUID === userUID);
-
-    setPointRank(pointRank + 1);
-    setStreakRank(streakRank + 1);
-
-    console.log("User point rank: ", pointRank + 1); // Log point rank
-    console.log("User streak rank: ", streakRank + 1); // Log streak rank
-
-  }
+  
 
 
   return (
@@ -143,8 +116,9 @@ const RewardScreen = () => {
 
           <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5 }]}>
             <View style={styles.userInfo}>
+             
               <Image
-                source={{ uri: profilePic || profile }}
+                source={{ uri: profilePic || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png"  }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color }]}>{username} (YOU)</Text>
@@ -161,7 +135,7 @@ const RewardScreen = () => {
             <View style={styles.userInfo}>
               <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
               <Image
-                source={{ uri: user.profilePic || profile }}
+                source={{ uri: user.profilePic || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png" }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color, marginRight: 7 }]}>{user.name}</Text>
@@ -179,7 +153,7 @@ const RewardScreen = () => {
           <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5 }]}>
             <View style={styles.userInfo}>
               <Image
-                source={{ uri: profilePic || profile }}
+                source={{ uri: profilePic || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png" }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color}]}>{username} (YOU)</Text>
@@ -197,7 +171,7 @@ const RewardScreen = () => {
               <View style={styles.userInfo}>
               <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
                 <Image
-                  source={{ uri: user.profilePic || profile }}
+                  source={{ uri: user.profilePic  || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png" }}
                   style={[styles.profileImage, { backgroundColor: theme.background }]}
                 />
                 <Text style={[styles.username, { color: theme.color ,marginRight: 7  }]}>{user.name}</Text>
