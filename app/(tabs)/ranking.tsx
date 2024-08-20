@@ -34,7 +34,7 @@ const RewardScreen = () => {
 
   useEffect(() => {
     console.log("in useeffect")
-    fetchUserData().then(() => {
+      fetchUserData().then(() => {
       sortByPoints();
       sortByStreak();
       findUserRanking();
@@ -113,7 +113,7 @@ const RewardScreen = () => {
     const sortedByStreaks = users.sort((a, b) => b.currStreak - a.currStreak);
     setStreakRanking(sortedByStreaks);
     console.log("Sorted by streak: ", sortedByStreaks); // Log sorted users by streak
-
+ 
   }
 
   const findUserRanking= () => {
@@ -150,13 +150,13 @@ const RewardScreen = () => {
               <Text style={[styles.username, { color: theme.color }]}>{username} (YOU)</Text>
             </View>
             <View>
-              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: 7</Text>
+              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: {streakRank}</Text>
               <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Current Streak: {currStreak}</Text>
             </View>
           </View>
         </View>
 
-        {sortedByStreak.map((user, index) => (
+        {streakRanking.map((user, index) => (
           <View key={index} style={[styles.userRanking, { backgroundColor: theme.content }]}>
             <View style={styles.userInfo}>
               <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
@@ -164,7 +164,7 @@ const RewardScreen = () => {
                 source={{ uri: user.profilePic || profile }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
-              <Text style={[styles.username, { color: theme.color, marginRight: 7 }]}>{user.username}</Text>
+              <Text style={[styles.username, { color: theme.color, marginRight: 7 }]}>{user.name}</Text>
               <FontAwesome5 name="medal" size={24} color={getBorderColor(index + 1)} />
             </View>
             <View>
@@ -185,14 +185,14 @@ const RewardScreen = () => {
               <Text style={[styles.username, { color: theme.color}]}>{username} (YOU)</Text>
             </View>
             <View>
-              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: 5</Text>
+              <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10, fontSize: 18 }]}>RANK: {pointRank}</Text>
               <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points : {point}</Text>
             </View>
           </View>
 
 
 
-          {sortedByPoints.map((user, index) => (
+          {pointRanking.map((user, index) => (
             <View key={index} style={[styles.userRanking, { backgroundColor: theme.content, }]}>
               <View style={styles.userInfo}>
               <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
@@ -200,11 +200,11 @@ const RewardScreen = () => {
                   source={{ uri: user.profilePic || profile }}
                   style={[styles.profileImage, { backgroundColor: theme.background }]}
                 />
-                <Text style={[styles.username, { color: theme.color ,marginRight: 7  }]}>{user.username}</Text>
+                <Text style={[styles.username, { color: theme.color ,marginRight: 7  }]}>{user.name}</Text>
                 <FontAwesome5 name="medal" size={24} color={getBorderColor(index + 1)} />
               </View>
               <View>
-                <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points: {user.points}</Text>
+                <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points: {user.point}</Text>
               </View>
             </View>
           ))}
