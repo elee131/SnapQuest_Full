@@ -8,7 +8,9 @@ import {
   Image,
   TouchableOpacity,
   Alert,
-  Switch
+  Switch,
+  ActivityIndicator, 
+  StatusBar, 
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { profile } from "@/assets/data/images";
@@ -23,6 +25,7 @@ import { EventRegister } from 'react-native-event-listeners';
 const Index = () => {
   const theme = useContext(themeContext)
   const [darkMode, setDarkMode] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     username,
@@ -35,6 +38,15 @@ const Index = () => {
   } = useUser();
   const navigation = useNavigation();
 
+  const showAlert = (message: string) => {
+    Alert.alert(
+      'Notification',
+      message,
+      [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+      { cancelable: false }
+    );
+  };
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -43,8 +55,12 @@ const Index = () => {
       quality: 1,
     });
 
+
+
     if (!result.canceled) {
-      handleUpload(result.assets[0].uri);
+
+      setProfilePic(result.assets[0].uri);
+      showAlert("Your profile picture has been successfully changed!"); 
     }
   };
 
@@ -101,6 +117,16 @@ const Index = () => {
       { text: "Logout", onPress: () => handleLogout() },
     ]);
   };
+
+  if (isLoading) {
+    return (
+      <SafeAreaView style ={[styles.loadingContainer, {backgroundColor: theme.content}]}>
+        <ActivityIndicator size ="large" color="0000ff"/>
+        <Text style={[{color: theme.color}]}>Loading...</Text>
+      </SafeAreaView>
+    )
+  }
+
 
   return (
     <SafeAreaView style={[styles.safeArea, , {backgroundColor: theme.background}]}>
@@ -284,6 +310,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: "inter-bold",
     marginRight: "4%", 
+  },
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+    paddingTop:StatusBar.currentHeight,
+    justifyContent:"center",
+    alignItems:"center"
   },
 });
 

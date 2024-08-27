@@ -34,6 +34,7 @@ const RewardScreen = () => {
   const [streakRank, setStreakRank] =useState(-1);
 
   useEffect(() => {
+
     fetchUserData();
   }, []);
   
@@ -91,6 +92,7 @@ const RewardScreen = () => {
     console.log("User streak rank: ", streakRank + 1); // Log streak rank
   };
 
+
   const getBorderColor = (rank: number) => {
     switch (rank) {
       case 1: return 'gold';    
@@ -99,8 +101,58 @@ const RewardScreen = () => {
       default: return '#ccc';   
     }
   };
-  
-  
+
+
+  const fetchUserData = async () => {
+    const data = await getDocs(collection(db, "users"));
+    const userData: UserData[] = [];
+
+    data.forEach((doc) => {
+      const currData = doc.data();
+      const currUser = {
+        userUID: currData.userUID as string,
+        name: currData.name as string,
+        profilePic: currData.profiePic as string,
+        currStreak: currData.currStreak as number,
+        point: currData.point as number,
+      };
+
+      userData.push(currUser);
+    });
+
+    setUsers(userData);
+    console.log("Fetched user data: ", userData); // Log user data after fetching
+
+  }
+
+
+  const sortByPoints = () => {
+    const sortedByPoints = users.sort((a, b) => b.point - a.point);
+    setPointRanking(sortedByPoints);
+    console.log("Sorted by points: ", sortedByPoints); // Log sorted users by points
+
+  }
+
+  const sortByStreak = () => {
+    const sortedByStreaks = users.sort((a, b) => b.currStreak - a.currStreak);
+    setStreakRanking(sortedByStreaks);
+    console.log("Sorted by streak: ", sortedByStreaks); // Log sorted users by streak
+
+  }
+
+  const findUserRanking= () => {
+    const pointRank = pointRanking.findIndex(user => user.userUID === userUID);
+    const streakRank = streakRanking.findIndex(user => user.userUID === userUID);
+
+    setPointRank(pointRank + 1);
+    setStreakRank(streakRank + 1);
+
+    console.log("User point rank: ", pointRank + 1); // Log point rank
+    console.log("User streak rank: ", streakRank + 1); // Log streak rank
+
+  }
+
+
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
