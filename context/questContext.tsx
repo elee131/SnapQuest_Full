@@ -72,6 +72,7 @@ export const QuestProvider: React.FC<QuestProviderProps> = ({ children }) => {
     const fetchRandomQuest = async () => {
         setQuest(prevQuest => ({ ...prevQuest, loading: true }));
         try {
+            console.log("in fetch")
             const collectionRef = collection(db, 'prompts'); // Changed to 'prompts' to match your quest data
             const snapshot = await getDocs(collectionRef);
             const docs = snapshot.docs;

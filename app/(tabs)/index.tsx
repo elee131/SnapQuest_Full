@@ -44,9 +44,47 @@ const Index = () => {
     });
 
     if (!result.canceled) {
-      setProfilePic(result.assets[0].uri);
+      handleUpload(result.assets[0].uri);
     }
   };
+
+  const handleUpload = async (uri : string) => {
+    console.log("in handle upload")
+    try {
+      let imageURL
+
+      if (!uri) {
+        console.log("empty url")
+        return
+      }
+
+      const image = new FormData();
+      const img = {
+        uri: uri,
+        type: 'image/jpeg', // or the appropriate mime type of the file
+        name: 'upload.jpg' // the name of the file
+      };
+      image.append("file", img);
+      image.append("cloud_name", "du40sblw6");
+      image.append("upload_preset", "userImage");
+
+      const response = await fetch (
+        "https://api.cloudinary.com/v1_1/du40sblw6/image/upload",
+        {
+          method: "post",
+          body: image
+          
+        }
+      );
+      const imgData = await response.json();
+      imageURL = imgData.secure_url.toString();      
+      console.log(imageURL);
+      setProfilePic(imageURL);
+
+    } catch (error) {
+      console.log("caught error:", error);
+    }
+  }
 
   const handleLogout = () => {
     navigation.navigate("Login");
