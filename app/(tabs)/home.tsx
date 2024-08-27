@@ -16,6 +16,7 @@ const Homescreen = () => {
     currStreak,
     longestStreak,
     completedDaily,
+    setCurrentQuest
   } = useUser();
 
   const {
@@ -56,8 +57,8 @@ const theme = useContext(themeContext)
         <Text style={[styles.questTitle , {color: theme.color}]}>TODAY'S QUEST:</Text>
         <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of {prompt}!!"</Text>
 
-        <TouchableOpacity style={[styles.button, {backgroundColor: theme.dark }]}>
-          <Text style = {[styles.buttonText, {color: theme.color}]}>Change Quest
+        <TouchableOpacity style={[styles.button, {backgroundColor: theme.dark }]} onPress = {() => fetchRandomQuest()}>
+          <Text style = {[styles.buttonText, {color: theme.color}]} >Change Quest
           {/* <MaterialIcons name="change-circle" size={26} color="black"style={styles.buttonIcon} /></Text> */}
           </Text>
         </TouchableOpacity>
