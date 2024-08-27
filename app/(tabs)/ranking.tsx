@@ -34,7 +34,6 @@ const RewardScreen = () => {
   const [streakRank, setStreakRank] =useState(-1);
 
   useEffect(() => {
-
     fetchUserData();
   }, []);
   
@@ -48,7 +47,7 @@ const RewardScreen = () => {
         const currUser = {
           userUID: currData.userUID as string,
           name: currData.name as string,
-          profilePic: currData.profilePic as string,
+          profilePic: currData.profilePic as string, 
           currStreak: currData.currStreak as number,
           point: currData.point as number,
         };
@@ -92,7 +91,6 @@ const RewardScreen = () => {
     console.log("User streak rank: ", streakRank + 1); // Log streak rank
   };
 
-
   const getBorderColor = (rank: number) => {
     switch (rank) {
       case 1: return 'gold';    
@@ -101,57 +99,7 @@ const RewardScreen = () => {
       default: return '#ccc';   
     }
   };
-
-
-  const fetchUserData = async () => {
-    const data = await getDocs(collection(db, "users"));
-    const userData: UserData[] = [];
-
-    data.forEach((doc) => {
-      const currData = doc.data();
-      const currUser = {
-        userUID: currData.userUID as string,
-        name: currData.name as string,
-        profilePic: currData.profiePic as string,
-        currStreak: currData.currStreak as number,
-        point: currData.point as number,
-      };
-
-      userData.push(currUser);
-    });
-
-    setUsers(userData);
-    console.log("Fetched user data: ", userData); // Log user data after fetching
-
-  }
-
-
-  const sortByPoints = () => {
-    const sortedByPoints = users.sort((a, b) => b.point - a.point);
-    setPointRanking(sortedByPoints);
-    console.log("Sorted by points: ", sortedByPoints); // Log sorted users by points
-
-  }
-
-  const sortByStreak = () => {
-    const sortedByStreaks = users.sort((a, b) => b.currStreak - a.currStreak);
-    setStreakRanking(sortedByStreaks);
-    console.log("Sorted by streak: ", sortedByStreaks); // Log sorted users by streak
-
-  }
-
-  const findUserRanking= () => {
-    const pointRank = pointRanking.findIndex(user => user.userUID === userUID);
-    const streakRank = streakRanking.findIndex(user => user.userUID === userUID);
-
-    setPointRank(pointRank + 1);
-    setStreakRank(streakRank + 1);
-
-    console.log("User point rank: ", pointRank + 1); // Log point rank
-    console.log("User streak rank: ", streakRank + 1); // Log streak rank
-
-  }
-
+  
 
 
   return (
@@ -168,8 +116,9 @@ const RewardScreen = () => {
 
           <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5 }]}>
             <View style={styles.userInfo}>
+             
               <Image
-                source={{ uri: profilePic || profile }}
+                source={{ uri: profilePic || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png"  }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color }]}>{username} (YOU)</Text>
@@ -186,7 +135,7 @@ const RewardScreen = () => {
             <View style={styles.userInfo}>
               <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
               <Image
-                source={{ uri: user.profilePic || profile }}
+                source={{ uri: user.profilePic || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png" }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color, marginRight: 7 }]}>{user.name}</Text>
@@ -204,7 +153,7 @@ const RewardScreen = () => {
           <View style={[styles.userRanking, { backgroundColor: theme.content, borderColor: theme.dark, borderWidth: 1.5 }]}>
             <View style={styles.userInfo}>
               <Image
-                source={{ uri: profilePic || profile }}
+                source={{ uri: profilePic || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png" }}
                 style={[styles.profileImage, { backgroundColor: theme.background }]}
               />
               <Text style={[styles.username, { color: theme.color}]}>{username} (YOU)</Text>
@@ -222,7 +171,7 @@ const RewardScreen = () => {
               <View style={styles.userInfo}>
               <Text style={[{ color: theme.color, fontWeight: '600', padding: 10, fontSize: 28 }]}>{index + 1}</Text>
                 <Image
-                  source={{ uri: user.profilePic || profile }}
+                  source={{ uri: user.profilePic  || "https://res.cloudinary.com/du40sblw6/image/upload/v1724113705/profile_wmmkwa.png" }}
                   style={[styles.profileImage, { backgroundColor: theme.background }]}
                 />
                 <Text style={[styles.username, { color: theme.color ,marginRight: 7  }]}>{user.name}</Text>
