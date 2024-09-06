@@ -41,12 +41,14 @@ const theme = useContext(themeContext)
 
       {/* Header Section */}
       
-      <LottieView
+      {/* <LottieView
           autoPlay
           resizeMode="cover"
           style={styles.welcome}
           source={require("../../assets/animation/welcome.json")}
-        />
+        /> */}
+
+        <Image source={theme.logo} style={styles.logo} />
       <View style={[styles.header, {backgroundColor: theme.content}]}>
         <Text style={[styles.headerText, {color: theme.color}]}> Welcome, {username}!</Text>
       </View>
@@ -208,6 +210,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 16, 
   },
+  logo: {
+    height: "10%", 
+    width: "auto", 
+    marginVertical: "10%", 
+  
+
+
+
+  }
 
 });
 

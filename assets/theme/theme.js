@@ -1,3 +1,7 @@
+import lightLogo from '../images/LightMode_Logo.png';
+import darkLogo from '../images/DarkMode_Logo.png';
+
+
 const theme ={
     light:{
         content: "white",
@@ -10,6 +14,7 @@ const theme ={
 
         navButton: "#FFA62B",
         navColor: "#FFF8F0",
+        logo: lightLogo,
 
     }, 
     dark:{
@@ -23,6 +28,8 @@ const theme ={
 
         navColor: "#161618", 
         navButton: "#568C69",
+
+        logo: darkLogo,
 
     
     }
