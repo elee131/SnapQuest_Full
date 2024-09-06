@@ -96,7 +96,7 @@ const RewardScreen = () => {
       case 1: return 'gold';    
       case 2: return 'silver';  
       case 3: return '#CD7F32'; 
-      default: return '#ccc';   
+      default: return 'white';   
     }
   };
   
@@ -175,7 +175,10 @@ const RewardScreen = () => {
                   style={[styles.profileImage, { backgroundColor: theme.background }]}
                 />
                 <Text style={[styles.username, { color: theme.color ,marginRight: 7  }]}>{user.name}</Text>
-                <FontAwesome5 name="medal" size={24} color={getBorderColor(index + 1)} />
+                {getBorderColor(index + 1) === "white" ? null : (
+        <FontAwesome5 name="medal" size={24} color={getBorderColor(index + 1)} />
+      )}
+
               </View>
               <View>
                 <Text style={[{ color: theme.color, fontWeight: '600', paddingRight: 10 }]}>Points: {user.point}</Text>
