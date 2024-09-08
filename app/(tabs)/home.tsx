@@ -34,6 +34,54 @@ const Homescreen = () => {
   };
 
 const theme = useContext(themeContext)
+  // return (
+
+  //   <ScrollView style={[styles.container, {backgroundColor: theme.background}]} >
+  //         <View style={[styles.secondContainer, ]}>
+
+  //     {/* Header Section */}
+      
+  //     {/* <LottieView
+  //         autoPlay
+  //         resizeMode="cover"
+  //         style={styles.welcome}
+  //         source={require("../../assets/animation/welcome.json")}
+  //       /> */}
+
+  //       <Image source={theme.logo} style={styles.logo} />
+  //     <View style={[styles.header, {backgroundColor: theme.content}]}>
+  //       <Text style={[styles.headerText, {color: theme.color}]}> Welcome, {username}!</Text>
+  //     </View>
+
+  //     {/* Quest Card Section */}
+  //     <View style={[styles.questCard, {backgroundColor: theme.content}]}>
+  //       <Image source={questImage} style={styles.questImage}/>
+  //       <Text style={[styles.questTitle , {color: theme.color}]}>TODAY'S QUEST:</Text>
+  //       <Text style={[styles.questName, {color: theme.color}]}>"Step outside and snap a photo of {prompt}!!"</Text>
+
+  //       <TouchableOpacity style={[styles.button, {backgroundColor: theme.dark }]} onPress = {() => fetchRandomQuest()}>
+  //         <Text style = {[styles.buttonText, {color: theme.color}]} >Change Quest
+  //         {/* <MaterialIcons name="change-circle" size={26} color="black"style={styles.buttonIcon} /></Text> */}
+  //         </Text>
+  //       </TouchableOpacity>
+        
+  //       <Text style={[styles.questStatus, {color: theme.color}]}>{completeText()}!</Text>
+  //     </View>
+
+  //     {/* Streak Section */}
+  //     <View style={[styles.streakSection, {backgroundColor: theme.content}]}>
+  //       <Text style={[styles.streakTitle1, {color: theme.color}]}>WELLNESS CHALLENGE</Text>
+  //       <Text style={[styles.streakTitle2, {color: theme.color}]}>You can do this!</Text>
+  //       <View style={styles.streakInfo}>
+  //         <Text style={[styles.streakText, {color: theme.color}]}>Current Streak: {currStreak} days</Text>
+  //         <Text style={[styles.streakText, {color: theme.color}]}>Longest Streak: {longestStreak} days</Text>
+  //       </View>
+  //     </View>
+  //     {/* Additional components will go here */}
+  //     </View>
+  //   </ScrollView>
+ 
+  // )
   return (
 
     <ScrollView style={[styles.container, {backgroundColor: theme.background}]} >
@@ -41,14 +89,7 @@ const theme = useContext(themeContext)
 
       {/* Header Section */}
       
-      {/* <LottieView
-          autoPlay
-          resizeMode="cover"
-          style={styles.welcome}
-          source={require("../../assets/animation/welcome.json")}
-        /> */}
-
-        <Image source={theme.logo} style={styles.logo} />
+      <Image source={theme.logo} style={styles.logo} />
       <View style={[styles.header, {backgroundColor: theme.content}]}>
         <Text style={[styles.headerText, {color: theme.color}]}> Welcome, {username}!</Text>
       </View>
@@ -90,11 +131,14 @@ const theme = useContext(themeContext)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 200
 
   },
   secondContainer: {
     marginTop: "5%", 
-    marginBottom: "5%"
+    marginBottom: "5%",
+    paddingBottom: 100,
+    flex: 1,
 
   }, 
   header: {
