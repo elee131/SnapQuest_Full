@@ -5,6 +5,7 @@ import { useUser } from "../../context/UserContext";
 import LottieView from "lottie-react-native";
 // import { MaterialIcons } from '@expo/vector-icons';
 import {useQuest} from 'context/questContext';
+import { AuthErrorCodes } from 'firebase/auth';
 
 
 
@@ -118,7 +119,6 @@ const theme = useContext(themeContext)
           <Text style={[styles.streakText, {color: theme.color}]}>Longest Streak: {longestStreak} days</Text>
         </View>
       </View>
-      {/* Additional components will go here */}
       </View>
     </ScrollView>
  
@@ -255,12 +255,11 @@ const styles = StyleSheet.create({
     fontSize: 16, 
   },
   logo: {
-    height: "10%", 
-    width: "auto", 
-    marginVertical: "10%", 
-  
-
-
+    height: "10%",  
+    width: "100%",   
+    resizeMode: "contain",  
+    marginVertical: "10%",  
+    alignSelf: 'center', 
 
   }
 
